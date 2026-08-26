@@ -12,26 +12,26 @@ export const Badge: React.FC<BadgeProps> = ({
   className = '',
   ...props
 }) => {
-  const baseStyle = 'px-2 py-0.5 rounded-full self-start';
+  const baseStyle = 'px-2.5 py-0.5 rounded-full self-start';
 
-  let variantStyle = 'bg-[#f1f3f9] border border-[#dee9fc]';
-  let textStyle = 'text-slate-500 font-black text-[8px] uppercase tracking-wider';
+  let variantStyle = 'bg-neutral-100';
+  let textStyle = 'text-neutral-500 font-semibold text-[10px]';
 
   if (variant === 'success') {
-    variantStyle = 'bg-[#d2f4ef] border border-transparent';
-    textStyle = 'text-[#006a61] font-black text-[8px] uppercase tracking-wider';
+    variantStyle = 'bg-emerald-50';
+    textStyle = 'text-[#34c759] font-semibold text-[10px]';
   } else if (variant === 'alert') {
-    variantStyle = 'bg-[#ffdad6] border border-transparent';
-    textStyle = 'text-[#ba1a1a] font-black text-[8px] uppercase tracking-wider';
+    variantStyle = 'bg-red-50';
+    textStyle = 'text-[#ff3b30] font-semibold text-[10px]';
   } else if (variant === 'warning') {
-    variantStyle = 'bg-[#ffe09e] border border-transparent';
-    textStyle = 'text-[#8a5200] font-black text-[8px] uppercase tracking-wider';
+    variantStyle = 'bg-orange-50';
+    textStyle = 'text-[#ff9500] font-semibold text-[10px]';
   } else if (variant === 'sync') {
-    variantStyle = 'bg-[#86f2e4]/15 border border-[#86f2e4]/30';
-    textStyle = 'text-[#006a61] font-black text-[8px] uppercase tracking-wider';
+    variantStyle = 'bg-blue-50';
+    textStyle = 'text-[#007aff] font-semibold text-[10px]';
   } else if (variant === 'info') {
-    variantStyle = 'bg-[#eff4ff] border border-transparent';
-    textStyle = 'text-[#2a14b4] font-black text-[8px] uppercase tracking-wider';
+    variantStyle = 'bg-blue-50';
+    textStyle = 'text-[#007aff] font-semibold text-[10px]';
   }
 
   return (

@@ -181,89 +181,92 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
   };
 
   return (
-    <ScrollView className="flex-1 bg-[#fbfaf7]">
+    <ScrollView className="flex-1 bg-[#f2f2f7]">
       {/* Mini Header */}
-      <View className="flex-row items-center justify-between px-6 py-5 border-b border-[#e2dfd9] bg-[#fbfaf7]">
-        <Text className="text-lg font-black text-[#121c2a]">Document Vault</Text>
-        <View className="flex-row items-center gap-1.5 bg-[#d2f4ef] px-3.5 py-1 rounded-full">
-          <FolderOpen size={12} color="#006a61" />
-          <Text className="text-[10px] font-black text-[#006a61] uppercase tracking-wide">
+      <View className="flex-row items-center justify-between px-6 py-4 border-b border-neutral-100 bg-white shadow-xs">
+        <Text className="text-sm font-bold text-neutral-800">Files Vault</Text>
+        <View className="flex-row items-center gap-1.5 bg-blue-50 px-3.5 py-1 rounded-full">
+          <FolderOpen size={12} color="#007aff" />
+          <Text className="text-[10px] font-bold text-[#007aff] uppercase tracking-wide">
             {documents.length} Files
           </Text>
         </View>
       </View>
 
-      <View className="p-6 space-y-6">
+      <View className="p-5 space-y-5">
         {/* workflow step manager */}
         {workflowStep === 'idle' && (
           <TouchableOpacity
             onPress={() => setWorkflowStep('capture')}
-            className="w-full bg-[#2a14b4] py-4 rounded-2xl flex-row items-center justify-center gap-2 active:scale-98 shadow-sm"
+            className="w-full bg-[#007aff] py-3.5 rounded-xl flex-row items-center justify-center gap-2 active:opacity-90 shadow-sm"
           >
             <Upload size={16} color="#ffffff" />
-            <Text className="text-white font-black text-xs uppercase tracking-wider">
-              Scan New Document
-            </Text>
+            <Text className="text-white font-bold text-sm">Scan New Document</Text>
           </TouchableOpacity>
         )}
 
         {/* Capture Source Selection Wizard */}
         {workflowStep === 'capture' && (
-          <View className="bg-white border border-[#e2dfd9] rounded-3xl p-5 shadow-sm space-y-4">
-            <View className="flex-row justify-between items-center pb-2 border-b border-slate-50">
+          <View className="bg-white border border-neutral-100 rounded-2xl p-5 shadow-sm space-y-4">
+            <View className="flex-row justify-between items-center pb-2 border-b border-neutral-100">
               <View>
-                <Text className="text-sm font-black text-slate-800">Scan New Medical Document</Text>
-                <Text className="text-[10px] font-bold text-slate-400">
+                <Text className="text-sm font-bold text-neutral-800">
+                  Scan New Medical Document
+                </Text>
+                <Text className="text-[10px] font-semibold text-neutral-400 mt-0.5">
                   Choose document capture source
                 </Text>
               </View>
-              <TouchableOpacity onPress={() => setWorkflowStep('idle')}>
-                <X size={16} color="#708090" />
+              <TouchableOpacity
+                onPress={() => setWorkflowStep('idle')}
+                className="p-1 bg-neutral-100 rounded-full"
+              >
+                <X size={15} color="#8e8e93" />
               </TouchableOpacity>
             </View>
 
-            <View className="grid grid-cols-2 gap-3 flex-row flex-wrap">
+            <View className="flex-row flex-wrap gap-3">
               <TouchableOpacity
                 onPress={() => handleSelectSource('camera')}
-                className="flex-1 min-w-[120px] p-4 bg-slate-50 border border-slate-100 rounded-2xl items-center gap-2 active:scale-95"
+                className="flex-1 min-w-[100px] p-4 bg-neutral-50 border border-neutral-100 rounded-xl items-center gap-2 active:scale-95"
               >
-                <Camera size={20} color="#2a14b4" />
-                <Text className="text-[10px] font-black text-slate-800 uppercase">Camera</Text>
+                <Camera size={20} color="#007aff" />
+                <Text className="text-[10px] font-bold text-neutral-700 uppercase">Camera</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={() => handleSelectSource('library')}
-                className="flex-1 min-w-[120px] p-4 bg-slate-50 border border-slate-100 rounded-2xl items-center gap-2 active:scale-95"
+                className="flex-1 min-w-[100px] p-4 bg-neutral-50 border border-neutral-100 rounded-xl items-center gap-2 active:scale-95"
               >
-                <ImageIcon size={20} color="#059669" />
-                <Text className="text-[10px] font-black text-slate-800 uppercase">Library</Text>
+                <ImageIcon size={20} color="#34c759" />
+                <Text className="text-[10px] font-bold text-neutral-700 uppercase">Library</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={() => handleSelectSource('voice')}
-                className="flex-1 min-w-[120px] p-4 bg-slate-50 border border-slate-100 rounded-2xl items-center gap-2 active:scale-95"
+                className="flex-1 min-w-[100px] p-4 bg-neutral-50 border border-neutral-100 rounded-xl items-center gap-2 active:scale-95"
               >
-                <Mic size={20} color="#ba1a1a" />
-                <Text className="text-[10px] font-black text-slate-800 uppercase">Voice Note</Text>
+                <Mic size={20} color="#ff9500" />
+                <Text className="text-[10px] font-bold text-neutral-700 uppercase">Voice Note</Text>
               </TouchableOpacity>
             </View>
 
             {/* Presets Mock Upload */}
-            <View className="space-y-2 pt-2 border-t border-slate-50">
-              <Text className="text-[9px] font-black text-slate-400 uppercase tracking-wider">
+            <View className="space-y-2 pt-3 border-t border-neutral-100">
+              <Text className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider pl-1">
                 Presets Mock Upload
               </Text>
               {presets.map((preset, idx) => (
                 <TouchableOpacity
                   key={preset.name}
                   onPress={() => handleSelectSource('preset', idx)}
-                  className="flex-row justify-between items-center p-3 bg-slate-50 border border-slate-100 rounded-xl active:scale-95"
+                  className="flex-row justify-between items-center p-3.5 bg-neutral-50 border border-neutral-100 rounded-xl active:scale-95"
                 >
-                  <View className="flex-row items-center gap-2">
-                    <FileText size={12} color="#708090" />
-                    <Text className="text-[10px] font-black text-slate-700">{preset.name}</Text>
+                  <View className="flex-row items-center gap-2.5">
+                    <FileText size={14} color="#8e8e93" />
+                    <Text className="text-xs font-semibold text-neutral-700">{preset.name}</Text>
                   </View>
-                  <ArrowRight size={10} color="#708090" />
+                  <ArrowRight size={12} color="#8e8e93" />
                 </TouchableOpacity>
               ))}
             </View>
@@ -272,23 +275,23 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
 
         {/* Processing State */}
         {workflowStep === 'processing' && (
-          <View className="bg-white border border-[#e2dfd9] rounded-3xl p-6 items-center space-y-4 shadow-sm">
-            <ActivityIndicator size="small" color="#2a14b4" />
+          <View className="bg-white border border-neutral-100 rounded-2xl p-6 items-center space-y-4 shadow-sm">
+            <ActivityIndicator size="small" color="#007aff" />
             <View className="items-center">
-              <Text className="text-xs font-black text-slate-800 uppercase tracking-wider text-center">
+              <Text className="text-xs font-bold text-neutral-850 tracking-wide text-center">
                 {docName.includes('Apollo')
                   ? 'KinGuard is reading the report…'
                   : captureSource === 'voice'
                     ? 'Transcribing Voice memo...'
                     : 'KinGuard AI OCR Scanning...'}
               </Text>
-              <Text className="text-[9px] font-bold text-slate-400 mt-0.5">
+              <Text className="text-[9px] font-bold text-neutral-400 mt-1">
                 Uploading files to London Vault ({scanProgress}%)
               </Text>
             </View>
-            <View className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+            <View className="w-full bg-neutral-100 rounded-full h-1.5 overflow-hidden">
               <View
-                className="bg-[#2a14b4] h-1.5 rounded-full"
+                className="bg-[#007aff] h-1.5 rounded-full"
                 style={{ width: `${scanProgress}%` }}
               />
             </View>
@@ -297,30 +300,30 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
 
         {/* Failed State */}
         {workflowStep === 'failed' && (
-          <View className="bg-white border-2 border-[#ba1a1a]/30 rounded-3xl p-6 items-center space-y-4 shadow-sm">
-            <View className="w-10 h-10 rounded-full bg-rose-50 items-center justify-center">
-              <AlertTriangle size={20} color="#ba1a1a" />
+          <View className="bg-white border border-red-200 rounded-2xl p-6 items-center space-y-4 shadow-sm">
+            <View className="w-10 h-10 rounded-full bg-red-50 items-center justify-center">
+              <AlertTriangle size={20} color="#ff3b30" />
             </View>
             <View className="items-center space-y-1">
-              <Text className="text-xs font-black text-rose-800 uppercase tracking-wider text-center">
+              <Text className="text-xs font-bold text-red-600 uppercase tracking-wider text-center">
                 OCR Ingestion Failed
               </Text>
-              <Text className="text-[10px] text-slate-500 font-bold text-center px-4 leading-normal">
+              <Text className="text-[10px] text-neutral-500 font-semibold text-center px-4 leading-normal">
                 We couldn't read the text from the image. Please verify resolution and try again.
               </Text>
             </View>
-            <View className="flex-row gap-3 w-full">
+            <View className="flex-row gap-3 w-full pt-1">
               <TouchableOpacity
                 onPress={() => setWorkflowStep('capture')}
-                className="flex-1 bg-slate-100 border border-slate-200 py-3 rounded-xl items-center justify-center active:scale-95"
+                className="flex-1 bg-neutral-100 py-3 rounded-xl items-center justify-center active:opacity-90"
               >
-                <Text className="text-slate-600 text-[10px] font-black uppercase">Cancel</Text>
+                <Text className="text-neutral-500 text-xs font-bold">Cancel</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => handleSelectSource(captureSource!)}
-                className="flex-1 bg-[#ba1a1a] py-3 rounded-xl items-center justify-center active:scale-95 shadow-sm"
+                className="flex-1 bg-[#ff3b30] py-3 rounded-xl items-center justify-center active:opacity-90 shadow-sm"
               >
-                <Text className="text-white text-[10px] font-black uppercase">Try Again</Text>
+                <Text className="text-white text-xs font-bold">Try Again</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -328,39 +331,42 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
 
         {/* Extracted Information State */}
         {workflowStep === 'extracted' && (
-          <View className="bg-white border border-[#e2dfd9] rounded-3xl p-5 space-y-4 shadow-sm">
-            <View className="flex-row items-center justify-between pb-2 border-b border-slate-50">
+          <View className="bg-white border border-neutral-100 rounded-2xl p-5 space-y-4 shadow-sm">
+            <View className="flex-row items-center justify-between pb-2 border-b border-neutral-100">
               <View>
-                <Text className="text-sm font-black text-slate-800">
+                <Text className="text-sm font-bold text-neutral-800">
                   {docName.includes('Apollo') ? 'I found 6 lab results.' : 'Extracted information'}
                 </Text>
-                <Text className="text-[9px] font-bold text-[#059669] uppercase tracking-wider">
+                <Text className="text-[9px] font-bold text-[#34c759] uppercase tracking-wider mt-0.5">
                   KinGuard AI Parser Ingested
                 </Text>
               </View>
-              <TouchableOpacity onPress={() => setWorkflowStep('idle')}>
-                <X size={16} color="#708090" />
+              <TouchableOpacity
+                onPress={() => setWorkflowStep('idle')}
+                className="p-1 bg-neutral-100 rounded-full"
+              >
+                <X size={15} color="#8e8e93" />
               </TouchableOpacity>
             </View>
 
             {/* Extracted Lab Values Panel */}
             {docName.includes('Apollo') && (
-              <View className="bg-[#eff4ff]/60 border border-[#dee9fc] p-4 rounded-2xl space-y-2">
-                <Text className="text-[9px] font-black text-[#2a14b4] uppercase tracking-wider">
+              <View className="bg-blue-50/60 border border-blue-100/50 p-4 rounded-xl space-y-2">
+                <Text className="text-[9px] font-bold text-[#007aff] uppercase tracking-wider">
                   Extracted Lab Metrics
                 </Text>
                 <View className="space-y-1.5">
                   <View className="flex-row justify-between">
-                    <Text className="text-xs text-slate-700 font-bold">HbA1c</Text>
-                    <Text className="text-xs font-black text-[#ba1a1a]">6.8% (Elevated)</Text>
+                    <Text className="text-xs text-neutral-700 font-semibold">HbA1c</Text>
+                    <Text className="text-xs font-bold text-[#ff3b30]">6.8% (Elevated)</Text>
                   </View>
                   <View className="flex-row justify-between">
-                    <Text className="text-xs text-slate-700 font-bold">LDL Cholesterol</Text>
-                    <Text className="text-xs font-black text-slate-800">104 mg/dL</Text>
+                    <Text className="text-xs text-neutral-700 font-semibold">LDL Cholesterol</Text>
+                    <Text className="text-xs font-bold text-neutral-800">104 mg/dL</Text>
                   </View>
                   <View className="flex-row justify-between">
-                    <Text className="text-xs text-slate-700 font-bold">Creatinine</Text>
-                    <Text className="text-xs font-black text-slate-850">0.9 mg/dL</Text>
+                    <Text className="text-xs text-neutral-700 font-semibold">Creatinine</Text>
+                    <Text className="text-xs font-bold text-neutral-800">0.9 mg/dL</Text>
                   </View>
                 </View>
               </View>
@@ -369,44 +375,47 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
             {/* Editable Fields */}
             <View className="space-y-3">
               <View className="space-y-1">
-                <Text className="text-[9px] font-black text-slate-400 uppercase">
+                <Text className="text-[9px] font-bold text-neutral-400 uppercase pl-0.5">
                   Document Name
                 </Text>
                 <TextInput
                   value={docName}
                   onChangeText={setDocName}
-                  className="bg-slate-50 border border-slate-100 rounded-xl p-3 text-xs text-slate-800 font-bold"
+                  className="bg-neutral-50 border border-neutral-100 rounded-xl p-3 text-xs text-neutral-800 font-bold"
                 />
               </View>
 
               <View className="space-y-1">
-                <Text className="text-[9px] font-black text-slate-400 uppercase">Category</Text>
+                <Text className="text-[9px] font-bold text-neutral-400 uppercase pl-0.5">
+                  Category
+                </Text>
                 <TextInput
                   value={docCategory}
                   onChangeText={setDocCategory}
-                  className="bg-slate-50 border border-slate-100 rounded-xl p-3 text-xs text-slate-800 font-bold"
+                  className="bg-neutral-50 border border-neutral-100 rounded-xl p-3 text-xs text-neutral-800 font-bold"
                 />
               </View>
 
               <View className="space-y-1">
-                <Text className="text-[9px] font-black text-slate-400 uppercase">
+                <Text className="text-[9px] font-bold text-neutral-400 uppercase pl-0.5">
                   Parsed Summary
                 </Text>
                 <TextInput
                   value={docSummary}
                   onChangeText={setDocSummary}
                   multiline
-                  className="bg-slate-50 border border-slate-100 rounded-xl p-3 text-xs text-slate-800 font-semibold h-16 leading-relaxed"
+                  numberOfLines={3}
+                  className="bg-neutral-50 border border-neutral-100 rounded-xl p-3 text-xs text-neutral-700 leading-normal"
                 />
               </View>
             </View>
 
             <TouchableOpacity
               onPress={() => setWorkflowStep('review')}
-              className="w-full bg-[#2a14b4] py-3.5 rounded-xl items-center justify-center active:scale-95 shadow-xs"
+              className="w-full bg-[#007aff] py-3.5 rounded-xl items-center justify-center active:opacity-90 shadow-sm"
             >
-              <Text className="text-white text-xs font-black uppercase">
-                {docName.includes('Apollo') ? 'Review & save' : 'Review details'}
+              <Text className="text-white text-xs font-bold">
+                {docName.includes('Apollo') ? 'Review & Save' : 'Review Details'}
               </Text>
             </TouchableOpacity>
           </View>
@@ -414,31 +423,36 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
 
         {/* Review and Save State */}
         {workflowStep === 'review' && (
-          <View className="bg-white border border-[#e2dfd9] rounded-3xl p-5 space-y-4 shadow-sm">
-            <View className="flex-row items-center justify-between pb-2 border-b border-slate-50">
+          <View className="bg-white border border-neutral-100 rounded-2xl p-5 space-y-4 shadow-sm">
+            <View className="flex-row items-center justify-between pb-2 border-b border-neutral-100">
               <View>
-                <Text className="text-sm font-black text-slate-800">Final Verification Review</Text>
-                <Text className="text-[9px] font-bold text-slate-400">
-                  Validate extracted values before save
+                <Text className="text-sm font-bold text-neutral-800">
+                  Final Verification Review
+                </Text>
+                <Text className="text-[9px] font-semibold text-neutral-400 mt-0.5">
+                  Validate extracted values before saving
                 </Text>
               </View>
-              <TouchableOpacity onPress={() => setWorkflowStep('extracted')}>
-                <X size={16} color="#708090" />
+              <TouchableOpacity
+                onPress={() => setWorkflowStep('extracted')}
+                className="p-1 bg-neutral-100 rounded-full"
+              >
+                <X size={15} color="#8e8e93" />
               </TouchableOpacity>
             </View>
 
-            <View className="space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+            <View className="space-y-3 bg-neutral-50 p-4 rounded-xl border border-neutral-100">
               <View className="space-y-0.5">
-                <Text className="text-[9px] font-black text-slate-400 uppercase">Document</Text>
-                <Text className="text-xs font-black text-slate-800">{docName}</Text>
+                <Text className="text-[9px] font-bold text-neutral-400 uppercase">Document</Text>
+                <Text className="text-xs font-bold text-neutral-800">{docName}</Text>
               </View>
               <View className="space-y-0.5">
-                <Text className="text-[9px] font-black text-slate-400 uppercase">Category</Text>
-                <Text className="text-xs font-black text-slate-800">{docCategory}</Text>
+                <Text className="text-[9px] font-bold text-neutral-400 uppercase">Category</Text>
+                <Text className="text-xs font-bold text-neutral-800">{docCategory}</Text>
               </View>
               <View className="space-y-0.5">
-                <Text className="text-[9px] font-black text-slate-400 uppercase">Summary</Text>
-                <Text className="text-xs font-semibold text-slate-700 leading-relaxed">
+                <Text className="text-[9px] font-bold text-neutral-400 uppercase">Summary</Text>
+                <Text className="text-xs font-semibold text-neutral-700 leading-relaxed">
                   {docSummary}
                 </Text>
               </View>
@@ -447,31 +461,33 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
             <View className="flex-row gap-2">
               <TouchableOpacity
                 onPress={() => setWorkflowStep('extracted')}
-                className="flex-1 bg-white border border-slate-200 py-3.5 rounded-xl items-center justify-center"
+                className="flex-1 bg-neutral-100 py-3.5 rounded-xl items-center justify-center active:opacity-90"
               >
-                <Text className="text-slate-600 font-bold text-xs">Edit</Text>
+                <Text className="text-neutral-500 font-bold text-xs">Edit</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={handleSaveDocument}
-                className="flex-1 bg-[#059669] py-3.5 rounded-xl items-center justify-center shadow-xs"
+                className="flex-1 bg-[#34c759] py-3.5 rounded-xl items-center justify-center active:opacity-90 shadow-sm"
               >
-                <Text className="text-white text-xs font-black uppercase">Save report</Text>
+                <Text className="text-white text-xs font-bold">Save Report</Text>
               </TouchableOpacity>
             </View>
           </View>
         )}
 
         {/* Processed Files catalog list */}
-        <View className="space-y-3">
-          <Text className="text-sm font-black text-[#121c2a]">Processed Medical Files</Text>
+        <View className="space-y-2">
+          <Text className="text-xs font-bold text-neutral-400 uppercase tracking-widest pl-1">
+            Processed Medical Files
+          </Text>
           <View className="space-y-3">
             {documents.map((doc) => {
               const isExpanded = selectedDocId === doc.id;
               return (
                 <View
                   key={doc.id}
-                  className={`bg-white rounded-[24px] p-4.5 border transition-all ${
-                    isExpanded ? 'border-[#2a14b4]' : 'border-slate-100'
+                  className={`bg-white rounded-2xl p-4 border transition-all ${
+                    isExpanded ? 'border-[#007aff]' : 'border-neutral-100'
                   }`}
                 >
                   <TouchableOpacity
@@ -479,56 +495,58 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
                     className="flex-row items-center justify-between"
                   >
                     <View className="flex-row items-center gap-3">
-                      <View className="w-9 h-9 rounded-full bg-[#d9e3f6] items-center justify-center shrink-0">
-                        <FileText size={18} color="#2a14b4" />
+                      <View className="w-9 h-9 rounded-full bg-blue-50 items-center justify-center shrink-0">
+                        <FileText size={18} color="#007aff" />
                       </View>
                       <View>
-                        <Text className="text-xs font-black text-[#121c2a] truncate max-w-[160px]">
+                        <Text className="text-xs font-bold text-neutral-800 truncate max-w-[160px]">
                           {doc.name}
                         </Text>
-                        <Text className="text-[10px] text-slate-400 font-bold">
+                        <Text className="text-[10px] text-neutral-400 font-semibold mt-0.5">
                           {doc.category} • {doc.fileSize}
                         </Text>
                       </View>
                     </View>
                     <View className="items-end">
-                      <View className="bg-[#d2f4ef] px-2 py-0.5 rounded-full">
-                        <Text className="text-[9px] font-black text-[#006a61] uppercase">
+                      <View className="bg-emerald-50 px-2 py-0.5 rounded-full">
+                        <Text className="text-[9px] font-bold text-[#34c759] uppercase">
                           {doc.status}
                         </Text>
                       </View>
-                      <Text className="text-[9px] text-slate-400 mt-1 font-bold">{doc.date}</Text>
+                      <Text className="text-[9px] text-neutral-400 mt-1 font-semibold">
+                        {doc.date}
+                      </Text>
                     </View>
                   </TouchableOpacity>
 
                   {isExpanded && (
-                    <View className="mt-4 pt-3.5 border-t border-[#e2dfd9] space-y-4">
+                    <View className="mt-4 pt-3.5 border-t border-neutral-100 space-y-4">
                       {/* AI Summary */}
-                      <View className="bg-[#eff4ff]/60 p-3 rounded-2xl border border-[#dee9fc]/40">
+                      <View className="bg-purple-50/70 p-3.5 rounded-xl border border-purple-100/30">
                         <View className="flex-row items-center gap-1.5 mb-1.5">
-                          <Sparkles size={12} color="#2a14b4" />
-                          <Text className="text-[10px] font-black text-[#2a14b4] uppercase tracking-wider">
+                          <Sparkles size={12} color="#af52de" />
+                          <Text className="text-[10px] font-bold text-[#af52de] uppercase tracking-wider">
                             KinGuard Summary
                           </Text>
                         </View>
-                        <Text className="text-[11px] leading-relaxed text-slate-700">
+                        <Text className="text-xs leading-relaxed text-neutral-700">
                           {doc.summary}
                         </Text>
                       </View>
 
                       {/* Findings */}
                       {doc.findings && (
-                        <View className="space-y-1">
+                        <View className="space-y-1 pl-1">
                           <View className="flex-row items-center gap-1">
-                            <TrendingUp size={12} color="#2a14b4" />
-                            <Text className="text-[10px] font-black text-slate-800 uppercase tracking-wider">
+                            <TrendingUp size={12} color="#007aff" />
+                            <Text className="text-[10px] font-bold text-neutral-800 uppercase tracking-wider">
                               Key Findings
                             </Text>
                           </View>
                           {doc.findings.map((f: string, idx: number) => (
                             <Text
                               key={idx}
-                              className="text-[11px] text-slate-600 leading-normal pl-2 font-medium"
+                              className="text-[11px] text-neutral-600 leading-normal pl-2 font-medium"
                             >
                               &#8226; {f}
                             </Text>
@@ -538,17 +556,17 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
 
                       {/* Recommendations */}
                       {doc.recommendations && (
-                        <View className="space-y-1">
+                        <View className="space-y-1 pl-1">
                           <View className="flex-row items-center gap-1">
-                            <CheckCircle2 size={12} color="#006a61" />
-                            <Text className="text-[10px] font-black text-[#006a61] uppercase tracking-wider">
+                            <CheckCircle2 size={12} color="#34c759" />
+                            <Text className="text-[10px] font-bold text-[#34c759] uppercase tracking-wider">
                               Actionable Steps
                             </Text>
                           </View>
                           {doc.recommendations.map((r: string, idx: number) => (
                             <Text
                               key={idx}
-                              className="text-[11px] text-[#006a61] leading-normal pl-2 font-bold"
+                              className="text-[11px] text-[#34c759] leading-normal pl-2 font-semibold"
                             >
                               &#8226; {r}
                             </Text>
@@ -557,15 +575,13 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
                       )}
 
                       {/* Actions */}
-                      <View className="flex-row gap-2 pt-2 border-t border-slate-50">
+                      <View className="flex-row gap-2 pt-2 border-t border-neutral-100">
                         <TouchableOpacity
                           onPress={() => onAskAI(`Summarize file ${doc.name}`)}
-                          className="flex-grow py-3 bg-[#2a14b4] rounded-xl flex-row items-center justify-center gap-1.5 active:scale-95 px-3"
+                          className="flex-grow py-2.5 bg-[#007aff] rounded-xl flex-row items-center justify-center gap-1.5 active:opacity-90 px-3 shadow-xs"
                         >
                           <MessageSquare size={12} color="#ffffff" />
-                          <Text className="text-white font-black text-[10px] uppercase">
-                            AI Summary
-                          </Text>
+                          <Text className="text-white font-bold text-[10px]">AI Summary</Text>
                         </TouchableOpacity>
 
                         {doc.status === 'parsed' && (
@@ -574,10 +590,10 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
                               onAskAI(`Prepare questions for doctor about report ${doc.name}`);
                               showToast('Generating doctor pre-visit question checklists...');
                             }}
-                            className="flex-grow py-3 bg-[#006a61] rounded-xl flex-row items-center justify-center gap-1.5 active:scale-95 px-3"
+                            className="flex-grow py-2.5 bg-[#34c759] rounded-xl flex-row items-center justify-center gap-1.5 active:opacity-90 px-3 shadow-xs"
                           >
                             <Sparkles size={12} color="#ffffff" />
-                            <Text className="text-white font-black text-[10px] uppercase">
+                            <Text className="text-white font-bold text-[10px]">
                               Prepare Questions
                             </Text>
                           </TouchableOpacity>
@@ -585,12 +601,10 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
 
                         <TouchableOpacity
                           onPress={() => alert('Report shared safely with Care network.')}
-                          className="py-3 px-3.5 border border-slate-200 rounded-xl flex-row items-center justify-center gap-1 active:scale-95 bg-white"
+                          className="py-2.5 px-3 border border-neutral-200 rounded-xl flex-row items-center justify-center gap-1 active:bg-neutral-50 bg-white"
                         >
-                          <Share2 size={12} color="#464554" />
-                          <Text className="text-slate-600 font-bold text-[10px] uppercase">
-                            Share
-                          </Text>
+                          <Share2 size={12} color="#8e8e93" />
+                          <Text className="text-neutral-500 font-semibold text-[10px]">Share</Text>
                         </TouchableOpacity>
                       </View>
                     </View>

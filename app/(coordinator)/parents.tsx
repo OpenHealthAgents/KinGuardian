@@ -5,7 +5,7 @@ import { BottomNavBar } from '../../src/components/Navigation';
 import { DeviceFrame } from '../../src/components/DeviceFrame';
 import { SimulatorControls } from '../../src/components/SimulatorControls';
 import { useRouter } from 'expo-router';
-import { ArrowRight, Clock, Pill, Calendar } from 'lucide-react-native';
+import { ChevronRight, Clock, Pill, Calendar } from 'lucide-react-native';
 
 export default function CoordinatorParentsRoute() {
   const context = useContext(AppContext);
@@ -15,16 +15,16 @@ export default function CoordinatorParentsRoute() {
 
   return (
     <DeviceFrame>
-      <View className="flex-1 relative bg-[#fdfbf7]">
+      <View className="flex-1 relative bg-[#f2f2f7]">
         {/* Header */}
-        <View className="px-6 py-5 border-b border-[#e2dfd9] bg-[#fdfbf7]">
-          <Text className="text-2xl font-black text-[#121c2a]">Parents</Text>
-          <Text className="text-xs text-[#708090] mt-0.5 font-medium">
-            Active monitoring profiles in Chennai, India
+        <View className="px-6 py-5 border-b border-neutral-100 bg-white">
+          <Text className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
+            Connected Profiles
           </Text>
+          <Text className="text-2xl font-bold text-neutral-900 tracking-tight mt-0.5">Parents</Text>
         </View>
 
-        <ScrollView className="flex-1 px-6 pt-5 space-y-4">
+        <ScrollView className="flex-1 px-5 pt-4 space-y-4">
           {context.people
             .filter((p) => p.id === 'dad' || p.id === 'mom')
             .map((p) => {
@@ -41,8 +41,8 @@ export default function CoordinatorParentsRoute() {
                 : 'Doing well';
               const statusColor =
                 statusText === 'Needs attention'
-                  ? 'text-rose-600 bg-rose-50 border border-rose-100'
-                  : 'text-emerald-700 bg-emerald-50 border border-emerald-100';
+                  ? 'text-[#ff3b30] bg-red-50'
+                  : 'text-[#34c759] bg-emerald-50';
 
               // Meds check
               const isAtorvastatinTaken =
@@ -62,58 +62,57 @@ export default function CoordinatorParentsRoute() {
                   key={p.id}
                   onPress={() => {
                     context.setCurrentPersonId(p.id);
-                    context.showToast(`Switched active monitoring focus to ${p.name}`);
+                    context.showToast(`Switched active focus to ${p.name}`);
                     router.push('/(coordinator)');
                   }}
-                  activeOpacity={0.9}
-                  className={`bg-white rounded-3xl p-5 border ${
-                    isActive ? 'border-[#2a14b4]' : 'border-[#e2dfd9]'
+                  activeOpacity={0.8}
+                  className={`bg-white rounded-2xl p-5 border ${
+                    isActive ? 'border-[#007aff]' : 'border-neutral-100'
                   } shadow-sm flex-row items-start gap-4`}
                 >
                   <View className="relative">
-                    <Image
-                      source={{ uri: p.avatarUrl }}
-                      className="w-14 h-14 rounded-full border border-slate-100"
-                    />
+                    <Image source={{ uri: p.avatarUrl }} className="w-12 h-12 rounded-full" />
                     <View
-                      className={`absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full border-2 border-white ${isDad ? (isDadSpiked ? 'bg-rose-500' : 'bg-emerald-500') : 'bg-emerald-500'}`}
+                      className={`absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-white ${
+                        isDad ? (isDadSpiked ? 'bg-[#ff3b30]' : 'bg-[#34c759]') : 'bg-[#34c759]'
+                      }`}
                     />
                   </View>
 
                   <View className="flex-1 space-y-2">
                     <View className="flex-row items-center justify-between flex-wrap gap-1">
                       <View className="space-y-0.5">
-                        <Text className="text-base font-black text-[#121c2a] leading-none">
+                        <Text className="text-base font-bold text-neutral-900 leading-none">
                           {p.name}
                         </Text>
-                        <Text className="text-[10px] text-slate-400 font-bold">
+                        <Text className="text-[10px] text-neutral-400 font-semibold mt-0.5">
                           {p.age} • {isDad ? 'Dad' : 'Mom'} • Chennai
                         </Text>
                       </View>
 
-                      <View className={`px-2.5 py-0.5 rounded-full ${statusColor}`}>
-                        <Text className="text-[8px] font-black uppercase">{statusText}</Text>
+                      <View className={`px-2 py-0.5 rounded-full ${statusColor}`}>
+                        <Text className="text-[8px] font-bold uppercase">{statusText}</Text>
                       </View>
                     </View>
 
                     {/* Vitals detail list stubs */}
-                    <View className="space-y-1.5 pt-1 border-t border-slate-50">
+                    <View className="space-y-1.5 pt-2 border-t border-neutral-100">
                       <View className="flex-row items-center gap-1.5">
-                        <Clock size={11} color="#708090" />
-                        <Text className="text-[10px] text-[#708090] font-semibold">
+                        <Clock size={11} color="#8e8e93" />
+                        <Text className="text-[10px] text-neutral-500 font-semibold">
                           Last check-in: {isDad ? '1 hour ago' : 'Yesterday 6:30 PM'}
                         </Text>
                       </View>
 
                       <View className="flex-row items-center gap-1.5">
-                        <Pill size={11} color="#708090" />
-                        <Text className="text-[10px] text-[#708090] font-semibold">
+                        <Pill size={11} color="#8e8e93" />
+                        <Text className="text-[10px] text-neutral-500 font-semibold">
                           Medication status:{' '}
                           <Text
                             className={
                               medStatus === 'Taken'
-                                ? 'text-emerald-700 font-black'
-                                : 'text-amber-600 font-black'
+                                ? 'text-[#34c759] font-bold'
+                                : 'text-[#ff9500] font-bold'
                             }
                           >
                             {medStatus}
@@ -122,16 +121,16 @@ export default function CoordinatorParentsRoute() {
                       </View>
 
                       <View className="flex-row items-center gap-1.5">
-                        <Calendar size={11} color="#708090" />
-                        <Text className="text-[10px] text-[#708090] font-semibold">
+                        <Calendar size={11} color="#8e8e93" />
+                        <Text className="text-[10px] text-neutral-500 font-semibold">
                           Next: {nextAppt}
                         </Text>
                       </View>
                     </View>
                   </View>
 
-                  <View className="self-center pl-2">
-                    <ArrowRight size={16} color={isActive ? '#2a14b4' : '#708090'} />
+                  <View className="self-center pl-1">
+                    <ChevronRight size={16} color={isActive ? '#007aff' : '#8e8e93'} />
                   </View>
                 </TouchableOpacity>
               );
@@ -145,6 +144,7 @@ export default function CoordinatorParentsRoute() {
           currentScreen="health_dashboard"
           onTabChange={(tab) => {
             if (tab === 'home') router.push('/(coordinator)');
+            else if (tab === 'parents') router.push('/parents');
             else if (tab === 'ask') context.setAskAIOpen(true);
             else if (tab === 'care') router.push('/care');
             else if (tab === 'profile') router.push('/profile');

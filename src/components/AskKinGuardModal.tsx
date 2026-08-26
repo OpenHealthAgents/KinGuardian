@@ -77,8 +77,6 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
     setLoading(true);
 
     try {
-      // Direct client side mock AI Clinical reasoning fallbacks
-      // This allows the app to run fully self-contained on physical mobile devices without localhost dependencies!
       setTimeout(() => {
         let aiReplyText = '';
         const qLower = text.toLowerCase();
@@ -138,16 +136,24 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
 
   return (
     <Modal visible={isOpen} animationType="slide" transparent={true} onRequestClose={onClose}>
-      <View className="flex-1 bg-black/60 justify-end">
-        <View className="bg-[#121c2a] rounded-t-[32px] max-h-[85%] p-6 space-y-4">
+      <View className="flex-1 bg-black/50 justify-end">
+        <View className="bg-white rounded-t-[28px] max-h-[85%] p-6 pt-3 space-y-4 shadow-xl">
+          {/* iOS Grabber Handle */}
+          <View className="w-10 h-1.5 bg-neutral-200 rounded-full self-center mb-1.5" />
+
           {/* Header */}
-          <View className="flex-row justify-between items-center pb-2 border-b border-slate-800">
+          <View className="flex-row justify-between items-center pb-2 border-b border-neutral-100">
             <View className="flex-row items-center gap-2">
-              <Sparkles size={18} color="#86f2e4" fill="#86f2e4" />
-              <Text className="text-base font-black text-white">Ask KinGuard AI</Text>
+              <Sparkles size={18} color="#af52de" fill="#af52de" />
+              <Text className="text-lg font-bold text-neutral-900 tracking-tight">
+                Ask KinGuard AI
+              </Text>
             </View>
-            <TouchableOpacity onPress={onClose} className="p-1.5 bg-slate-800 rounded-full">
-              <X size={16} color="#ffffff" />
+            <TouchableOpacity
+              onPress={onClose}
+              className="p-1.5 bg-neutral-100 rounded-full active:scale-90"
+            >
+              <X size={16} color="#8e8e93" />
             </TouchableOpacity>
           </View>
 
@@ -165,32 +171,32 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
                   className={`flex-row gap-2.5 max-w-[85%] ${isAi ? 'self-start' : 'self-end flex-row-reverse'}`}
                 >
                   <View
-                    className={`p-4 rounded-2xl space-y-2 ${
-                      isAi ? 'bg-slate-800 border border-slate-700' : 'bg-[#4338ca] text-white'
+                    className={`p-4 rounded-2xl space-y-1.5 ${
+                      isAi ? 'bg-neutral-100 border border-neutral-200/50' : 'bg-[#007aff]'
                     }`}
                   >
                     <Text
-                      className={`text-[10px] font-black uppercase ${isAi ? 'text-[#86f2e4]' : 'text-slate-300'}`}
+                      className={`text-[9px] font-bold uppercase ${isAi ? 'text-[#af52de]' : 'text-blue-200'}`}
                     >
                       {m.senderName} • {m.timestamp}
                     </Text>
                     <Text
-                      className={`text-xs md:text-sm leading-relaxed ${isAi ? 'text-slate-100' : 'text-white'}`}
+                      className={`text-xs md:text-sm leading-relaxed ${isAi ? 'text-neutral-800' : 'text-white'}`}
                     >
                       {m.text}
                     </Text>
 
                     {/* Citations */}
                     {isAi && m.citations && m.citations.length > 0 && (
-                      <View className="pt-2 border-t border-slate-700/50 mt-1 space-y-1">
+                      <View className="pt-2 border-t border-neutral-200 mt-1.5 space-y-1">
                         <View className="flex-row items-center gap-1">
-                          <FileText size={10} color="#777586" />
-                          <Text className="text-[9px] font-black text-slate-400 uppercase tracking-wider">
+                          <FileText size={10} color="#8e8e93" />
+                          <Text className="text-[9px] font-bold text-neutral-500 uppercase tracking-wider">
                             Citations &amp; Grounding
                           </Text>
                         </View>
                         {m.citations.map((cit, idx) => (
-                          <Text key={idx} className="text-[9px] text-slate-400 font-bold">
+                          <Text key={idx} className="text-[9px] text-neutral-500 font-semibold">
                             &#8226; {cit}
                           </Text>
                         ))}
@@ -202,9 +208,9 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
             })}
 
             {loading && (
-              <View className="self-start bg-slate-800 border border-slate-700 p-4 rounded-2xl flex-row items-center gap-2">
-                <ActivityIndicator size="small" color="#86f2e4" />
-                <Text className="text-xs font-semibold text-slate-300">
+              <View className="self-start bg-neutral-100 border border-neutral-200/50 p-4 rounded-2xl flex-row items-center gap-2">
+                <ActivityIndicator size="small" color="#af52de" />
+                <Text className="text-xs font-semibold text-neutral-500">
                   KinGuard is analyzing clinical logs...
                 </Text>
               </View>
@@ -219,9 +225,9 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
                   <TouchableOpacity
                     key={chip}
                     onPress={() => handleSend(chip)}
-                    className="bg-slate-800 border border-slate-700 rounded-full px-4 py-2"
+                    className="bg-neutral-50 border border-neutral-200 rounded-full px-3.5 py-1.5 active:bg-neutral-100"
                   >
-                    <Text className="text-[10px] font-black text-[#86f2e4]">{chip}</Text>
+                    <Text className="text-[10px] font-semibold text-[#007aff]">{chip}</Text>
                   </TouchableOpacity>
                 ))}
               </View>
@@ -229,17 +235,17 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
           )}
 
           {/* Input Bar */}
-          <View className="flex-row items-center bg-slate-800 rounded-full p-2 gap-2 border border-slate-700">
+          <View className="flex-row items-center bg-neutral-50 rounded-full p-1.5 gap-2 border border-neutral-200">
             <TextInput
               value={inputQuery}
               onChangeText={setInputQuery}
               placeholder="Ask KinGuard medical questions..."
-              placeholderTextColor="#777586"
-              className="flex-1 px-4 py-2.5 text-xs text-white outline-none"
+              placeholderTextColor="#8e8e93"
+              className="flex-1 px-4 py-2.5 text-xs text-neutral-800 outline-none"
             />
             <TouchableOpacity
               onPress={() => handleSend(inputQuery)}
-              className="w-10 h-10 rounded-full bg-[#4338ca] items-center justify-center active:scale-95"
+              className="w-9 h-9 rounded-full bg-[#007aff] items-center justify-center active:scale-95 shadow-sm"
             >
               <Send size={14} color="#ffffff" />
             </TouchableOpacity>

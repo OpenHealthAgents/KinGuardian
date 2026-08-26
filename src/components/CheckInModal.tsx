@@ -25,22 +25,28 @@ export const CheckInModal: React.FC<CheckInModalProps> = ({
 
   return (
     <Modal visible={isOpen} animationType="slide" transparent={true} onRequestClose={onClose}>
-      <View className="flex-1 bg-black/60 justify-end">
-        <View className="bg-white rounded-t-[32px] p-6 space-y-5">
+      <View className="flex-1 bg-black/50 justify-end">
+        <View className="bg-white rounded-t-[28px] p-6 pt-3 space-y-4 shadow-xl">
+          {/* iOS Grabber Handle */}
+          <View className="w-10 h-1.5 bg-neutral-200 rounded-full self-center mb-1.5" />
+
           {/* Header */}
-          <View className="flex-row justify-between items-center pb-2 border-b border-slate-100">
+          <View className="flex-row justify-between items-center pb-2 border-b border-neutral-100">
             <View className="flex-row items-center gap-2">
-              <Heart size={18} color="#be185d" fill="#be185d" />
-              <Text className="text-base font-black text-slate-800">
+              <Heart size={18} color="#ff3b30" fill="#ff3b30" />
+              <Text className="text-lg font-bold text-neutral-900 tracking-tight">
                 Check in with {person.name.split(' ')[0]}
               </Text>
             </View>
-            <TouchableOpacity onPress={onClose} className="p-1.5 bg-slate-100 rounded-full">
-              <X size={16} color="#464554" />
+            <TouchableOpacity
+              onPress={onClose}
+              className="p-1.5 bg-neutral-100 rounded-full active:scale-90"
+            >
+              <X size={16} color="#8e8e93" />
             </TouchableOpacity>
           </View>
 
-          {/* Quick choices */}
+          {/* Quick choices list */}
           <View className="space-y-2.5">
             {options.map((opt) => (
               <TouchableOpacity
@@ -49,10 +55,10 @@ export const CheckInModal: React.FC<CheckInModalProps> = ({
                   onSendCheckIn(opt);
                   onClose();
                 }}
-                className="w-full p-4 bg-[#f8f9ff] hover:bg-[#eff4ff] border border-[#eff4ff] rounded-2xl flex-row items-center gap-3 active:scale-98"
+                className="w-full p-4 bg-neutral-50 hover:bg-neutral-100 rounded-2xl flex-row items-center gap-3 active:scale-98"
               >
-                <MessageSquare size={14} color="#4338ca" />
-                <Text className="text-xs font-semibold text-slate-700 flex-1 leading-normal">
+                <MessageSquare size={14} color="#007aff" />
+                <Text className="text-xs font-semibold text-neutral-700 flex-1 leading-normal">
                   {opt}
                 </Text>
               </TouchableOpacity>

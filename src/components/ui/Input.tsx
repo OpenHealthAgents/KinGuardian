@@ -15,22 +15,16 @@ export const Input: React.FC<InputProps> = ({
   ...props
 }) => {
   return (
-    <View className={`w-full space-y-1 ${containerClass}`}>
-      {label && (
-        <Text className="text-[10px] font-black uppercase tracking-wider text-slate-400">
-          {label}
-        </Text>
-      )}
+    <View className={`w-full space-y-1.5 ${containerClass}`}>
+      {label && <Text className="text-xs font-semibold text-neutral-500">{label}</Text>}
       <TextInput
-        placeholderTextColor="#94a3b8"
-        className={`w-full bg-[#f8f9ff] text-slate-800 text-xs px-4 py-3 rounded-2xl border ${
-          error ? 'border-[#ba1a1a]' : 'border-[#dee9fc]'
-        } focus:border-[#2a14b4] ${className}`}
+        placeholderTextColor="#8e8e93"
+        className={`w-full bg-white text-neutral-800 text-sm px-4 py-3 rounded-xl border ${
+          error ? 'border-[#ff3b30]' : 'border-neutral-200'
+        } focus:border-[#007aff] ${className}`}
         {...props}
       />
-      {error && (
-        <Text className="text-[8px] font-black text-[#ba1a1a] uppercase mt-0.5">{error}</Text>
-      )}
+      {error && <Text className="text-xs font-medium text-[#ff3b30] mt-0.5">{error}</Text>}
     </View>
   );
 };

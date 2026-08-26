@@ -358,6 +358,7 @@ export const ParentModeDashboard: React.FC<ParentModeDashboardProps> = ({
             })}
           </View>
         </View>
+        <View className="h-28" />
       </View>
     </ScrollView>
   );

@@ -157,21 +157,21 @@ export default function CoordinatorAskRoute() {
 
   return (
     <DeviceFrame>
-      <View className="flex-1 relative bg-[#fbfaf7]">
+      <View className="flex-1 relative bg-[#f2f2f7]">
         {/* Header Title */}
-        <View className="px-6 py-5 border-b border-[#e2dfd9] bg-[#fbfaf7] space-y-1">
-          <View className="flex-row items-center justify-between">
-            <Text className="text-2xl font-black text-[#121c2a]">Ask KinGuard</Text>
-            <Sparkles size={20} color="#2a14b4" fill="#2a14b4" />
+        <View className="px-6 py-5 border-b border-neutral-100 bg-white flex-row items-center justify-between">
+          <View>
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">Ask KinGuard</Text>
+            <Text className="text-xs text-neutral-400 font-semibold mt-0.5">
+              Ask anything about Mom & Dad
+            </Text>
           </View>
-          <Text className="text-xs text-[#708090] font-semibold">
-            “Ask anything about Mom & Dad.”
-          </Text>
+          <Sparkles size={20} color="#af52de" fill="#af52de" />
         </View>
 
-        <ScrollView className="flex-1 px-6 pt-5 space-y-6">
+        <ScrollView className="flex-1 px-5 pt-4 space-y-5">
           {/* Messages list */}
-          <View className="space-y-4 pt-2">
+          <View className="space-y-4 pt-1">
             {messages.map((msg) => {
               const isUser = msg.sender === 'user';
               const isExpanded = expandedMessageId === msg.id;
@@ -182,59 +182,59 @@ export default function CoordinatorAskRoute() {
                   className={`w-full flex-row ${isUser ? 'justify-end' : 'justify-start'}`}
                 >
                   <View
-                    className={`max-w-[85%] rounded-3xl p-4.5 border ${
+                    className={`max-w-[85%] rounded-2xl p-4 border ${
                       isUser
-                        ? 'bg-[#2a14b4] border-[#2a14b4] rounded-br-none'
-                        : 'bg-white border-[#e2dfd9] rounded-bl-none shadow-sm space-y-2.5'
+                        ? 'bg-[#007aff] border-[#007aff] rounded-br-none'
+                        : 'bg-white border-neutral-100 rounded-bl-none shadow-sm space-y-2.5'
                     }`}
                   >
                     {!isUser && (
-                      <View className="flex-row items-center gap-1.5 text-[#2a14b4] mb-0.5">
-                        <Sparkles size={12} color="#2a14b4" fill="#2a14b4" />
-                        <Text className="text-[9px] font-black uppercase tracking-wider text-[#2a14b4]">
+                      <View className="flex-row items-center gap-1.5 mb-0.5">
+                        <Sparkles size={12} color="#af52de" fill="#af52de" />
+                        <Text className="text-[9px] font-bold uppercase tracking-wider text-[#af52de]">
                           KinGuard AI
                         </Text>
                       </View>
                     )}
                     <Text
-                      className={`text-xs leading-relaxed ${isUser ? 'text-white font-semibold' : 'text-slate-800 font-semibold'}`}
+                      className={`text-xs leading-relaxed ${isUser ? 'text-white font-semibold' : 'text-neutral-700 font-semibold'}`}
                     >
                       {msg.text}
                     </Text>
 
                     {/* AI Expandable Sources Transparency */}
                     {!isUser && msg.sources && msg.sources.length > 0 && (
-                      <View className="pt-2 border-t border-slate-100 space-y-2">
+                      <View className="pt-2 border-t border-neutral-100 space-y-2">
                         <TouchableOpacity
                           onPress={() => setExpandedMessageId(isExpanded ? null : msg.id)}
                           className="flex-row items-center justify-between"
                         >
-                          <Text className="text-[9px] font-black text-slate-400 uppercase tracking-wider">
+                          <Text className="text-[9px] font-bold text-neutral-400 uppercase tracking-wider">
                             Based on
                           </Text>
                           <View className="flex-row items-center gap-1">
-                            <Text className="text-[9px] font-black text-[#2a14b4] uppercase">
+                            <Text className="text-[9px] font-bold text-[#af52de] uppercase">
                               {isExpanded ? 'Hide Sources' : `${msg.sources.length} Sources`}
                             </Text>
                             {isExpanded ? (
-                              <ChevronUp size={11} color="#2a14b4" />
+                              <ChevronUp size={11} color="#af52de" />
                             ) : (
-                              <ChevronDown size={11} color="#2a14b4" />
+                              <ChevronDown size={11} color="#af52de" />
                             )}
                           </View>
                         </TouchableOpacity>
 
                         {isExpanded && (
-                          <View className="space-y-1.5 bg-[#fbfaf7] p-2.5 rounded-xl border border-slate-100">
+                          <View className="space-y-1.5 bg-neutral-50 p-2.5 rounded-xl border border-neutral-100/50">
                             {msg.sources.map((src, sIdx) => (
                               <View key={sIdx} className="space-y-0.5">
                                 <View className="flex-row items-center gap-1.5">
-                                  <CheckCircle2 size={9} color="#006a61" />
-                                  <Text className="text-[10px] font-black text-slate-800">
+                                  <CheckCircle2 size={9} color="#34c759" />
+                                  <Text className="text-[10px] font-bold text-neutral-800">
                                     {src.title}
                                   </Text>
                                 </View>
-                                <Text className="text-[9px] text-slate-400 font-semibold pl-3.5">
+                                <Text className="text-[9px] text-neutral-400 font-semibold pl-3.5">
                                   {src.detail}
                                 </Text>
                               </View>
@@ -245,7 +245,7 @@ export default function CoordinatorAskRoute() {
                     )}
 
                     {msg.suggestedActions && msg.suggestedActions.length > 0 ? (
-                      <View className="pt-3 border-t border-slate-100 flex-row flex-wrap gap-2">
+                      <View className="pt-3 border-t border-neutral-100 flex-row flex-wrap gap-2">
                         {msg.suggestedActions.map((action, aIdx) => (
                           <TouchableOpacity
                             key={aIdx}
@@ -263,9 +263,9 @@ export default function CoordinatorAskRoute() {
                                 context.showToast(`Action triggered: "${action}"`);
                               }
                             }}
-                            className="bg-[#eff4ff] border border-[#dee9fc] px-3 py-1.5 rounded-full active:scale-95"
+                            className="bg-blue-50/60 border border-blue-100/50 px-3 py-1.5 rounded-full active:scale-95"
                           >
-                            <Text className="text-[9px] font-black text-[#2a14b4] uppercase">
+                            <Text className="text-[9px] font-bold text-[#007aff] uppercase">
                               {action}
                             </Text>
                           </TouchableOpacity>
@@ -279,9 +279,9 @@ export default function CoordinatorAskRoute() {
 
             {loading && (
               <View className="w-full flex-row justify-start">
-                <View className="bg-white border border-[#e2dfd9] rounded-3xl rounded-bl-none p-4 shadow-sm flex-row items-center gap-2">
-                  <Sparkles size={12} color="#2a14b4" />
-                  <Text className="text-xs text-slate-400 italic font-bold">
+                <View className="bg-white border border-neutral-100 rounded-2xl rounded-bl-none p-4 shadow-sm flex-row items-center gap-2">
+                  <Sparkles size={12} color="#af52de" />
+                  <Text className="text-xs text-neutral-400 italic font-semibold">
                     Ingesting device telemetry...
                   </Text>
                 </View>
@@ -290,59 +290,62 @@ export default function CoordinatorAskRoute() {
           </View>
 
           {/* Quick Prompts List */}
-          <View className="space-y-3">
-            <Text className="text-[10px] font-black uppercase text-slate-400 tracking-wider">
+          <View className="space-y-2">
+            <Text className="text-[10px] font-bold uppercase text-neutral-400 tracking-wider pl-1">
               Quick prompts
             </Text>
-            <View className="space-y-2.5">
+            <View className="space-y-2">
               {quickPrompts.map((prompt, idx) => (
                 <TouchableOpacity
                   key={idx}
                   onPress={() => handleAsk(prompt)}
-                  className="bg-white border border-[#e2dfd9] rounded-2xl p-4.5 shadow-xs flex-row justify-between items-center active:scale-99"
+                  className="bg-white border border-neutral-100 rounded-xl p-4 shadow-xs flex-row justify-between items-center active:scale-99"
                 >
-                  <Text className="text-xs font-bold text-slate-800 flex-1">{prompt}</Text>
-                  <Sparkles size={12} color="#708090" />
+                  <Text className="text-xs font-bold text-neutral-700 flex-1">{prompt}</Text>
+                  <Sparkles size={12} color="#8e8e93" />
                 </TouchableOpacity>
               ))}
             </View>
           </View>
 
           {/* Input Box and Actions Panel */}
-          <View className="bg-white border border-[#e2dfd9] rounded-3xl p-5 shadow-sm space-y-4">
-            <View className="flex-row items-center bg-[#fbfaf7] border border-slate-100 rounded-xl px-4 py-1">
+          <View className="bg-white border border-neutral-100 rounded-2xl p-5 shadow-sm space-y-4">
+            <View className="flex-row items-center bg-neutral-100 border border-neutral-200/50 rounded-full px-4 py-0.5">
               <TextInput
                 value={query}
                 onChangeText={setQuery}
                 placeholder="Ask anything…"
-                placeholderTextColor="#a0aec0"
-                className="flex-1 py-3 text-xs text-slate-800"
+                placeholderTextColor="#8e8e93"
+                className="flex-1 py-3 text-xs text-neutral-800 font-semibold"
               />
-              <TouchableOpacity onPress={() => handleAsk()} className="p-2 bg-[#2a14b4] rounded-lg">
-                <Send size={12} color="#ffffff" />
+              <TouchableOpacity
+                onPress={() => handleAsk()}
+                className="p-1.5 bg-[#007aff] rounded-full"
+              >
+                <Send size={11} color="#ffffff" />
               </TouchableOpacity>
             </View>
 
             {/* Bottom Actions grid */}
             <View className="flex-row justify-around gap-2.5 pt-1">
-              <TouchableOpacity className="flex-row items-center gap-1.5 px-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl active:scale-95">
-                <Mic size={14} color="#708090" />
-                <Text className="text-[10px] font-black text-slate-600 uppercase">Voice</Text>
+              <TouchableOpacity className="flex-row items-center gap-1.5 px-4 py-2.5 bg-neutral-50 border border-neutral-100 rounded-xl active:scale-95">
+                <Mic size={14} color="#8e8e93" />
+                <Text className="text-[10px] font-bold text-neutral-600 uppercase">Voice</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity className="flex-row items-center gap-1.5 px-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl active:scale-95">
-                <Camera size={14} color="#708090" />
-                <Text className="text-[10px] font-black text-slate-600 uppercase">Camera</Text>
+              <TouchableOpacity className="flex-row items-center gap-1.5 px-4 py-2.5 bg-neutral-50 border border-neutral-100 rounded-xl active:scale-95">
+                <Camera size={14} color="#8e8e93" />
+                <Text className="text-[10px] font-bold text-neutral-600 uppercase">Camera</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity className="flex-row items-center gap-1.5 px-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl active:scale-95">
-                <Paperclip size={14} color="#708090" />
-                <Text className="text-[10px] font-black text-slate-600 uppercase">Attach</Text>
+              <TouchableOpacity className="flex-row items-center gap-1.5 px-4 py-2.5 bg-neutral-50 border border-neutral-100 rounded-xl active:scale-95">
+                <Paperclip size={14} color="#8e8e93" />
+                <Text className="text-[10px] font-bold text-neutral-600 uppercase">Attach</Text>
               </TouchableOpacity>
             </View>
           </View>
 
-          <View className="h-24" />
+          <View className="h-28" />
         </ScrollView>
 
         <BottomNavBar

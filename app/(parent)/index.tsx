@@ -31,7 +31,7 @@ export default function ParentDashboardRoute() {
 
   return (
     <DeviceFrame>
-      <View className="flex-1 relative bg-[#fffbeb]">
+      <View className="flex-1 relative bg-[#f2f2f7]">
         <ParentModeDashboard
           onSwitchMode={() => {
             context.setAppMode('coordinator');

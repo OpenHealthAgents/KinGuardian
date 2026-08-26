@@ -45,140 +45,142 @@ export const SyncDashboard: React.FC<SyncDashboardProps> = ({
   }, []);
 
   return (
-    <ScrollView className="flex-1 bg-[#f8f9ff]">
+    <ScrollView className="flex-1 bg-[#f2f2f7]">
       {/* Header */}
-      <View className="flex-row items-center justify-between px-5 py-4 border-b border-[#eff4ff] bg-[#f8f9ff]">
-        <Text className="text-base font-black text-[#2a14b4]">Cross-User Sync</Text>
+      <View className="flex-row items-center justify-between px-5 py-4 border-b border-neutral-100 bg-white">
+        <Text className="text-base font-bold text-neutral-900 tracking-tight">Cross-User Sync</Text>
         <TouchableOpacity
           onPress={onTriggerSync}
           disabled={isSyncing}
-          className="w-9 h-9 rounded-full bg-[#eff4ff] items-center justify-center text-[#2a14b4]"
+          className="w-9 h-9 rounded-full bg-neutral-100 items-center justify-center active:scale-95"
         >
           {isSyncing ? (
-            <ActivityIndicator size="small" color="#2a14b4" />
+            <ActivityIndicator size="small" color="#007aff" />
           ) : (
-            <RefreshCw size={16} color="#2a14b4" />
+            <RefreshCw size={14} color="#007aff" />
           )}
         </TouchableOpacity>
       </View>
 
-      <View className="p-5 space-y-6">
+      <View className="p-5 space-y-5">
         {/* Timezone translate */}
-        <View className="bg-white border border-[#dee9fc] rounded-[24px] p-5 shadow-sm space-y-4">
-          <View className="flex-row items-center justify-between border-b border-slate-55 pb-3">
-            <Text className="text-[10px] font-black text-slate-400 uppercase tracking-wider">
+        <View className="bg-white rounded-2xl p-5 shadow-sm shadow-neutral-100 space-y-4">
+          <View className="flex-row items-center justify-between border-b border-neutral-100 pb-3">
+            <Text className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
               Timezone Translation
             </Text>
-            <View className="bg-[#eff4ff] px-2.5 py-0.5 rounded-full">
-              <Text className="text-[8px] font-black text-[#4338ca] uppercase">
-                5.5 Hour Offset
-              </Text>
+            <View className="bg-[#eff6ff] px-2.5 py-0.5 rounded-full">
+              <Text className="text-[8px] font-bold text-[#007aff] uppercase">5.5 Hour Offset</Text>
             </View>
           </View>
 
-          <View className="flex-row gap-4">
-            <View className="flex-1 bg-[#f8f9ff] p-4 rounded-2xl items-center border border-slate-100">
-              <View className="w-8 h-8 rounded-full bg-[#e6eeff] items-center justify-center mb-2">
-                <Clock size={16} color="#2a14b4" />
+          <View className="flex-row gap-3">
+            <View className="flex-1 bg-neutral-50 p-4 rounded-xl items-center border border-neutral-100">
+              <View className="w-8 h-8 rounded-full bg-blue-50 items-center justify-center mb-2">
+                <Clock size={16} color="#007aff" />
               </View>
-              <Text className="text-[9px] font-black text-slate-400 uppercase">London (BST)</Text>
-              <Text className="text-base font-black text-slate-800 mt-0.5">
+              <Text className="text-[9px] font-bold text-neutral-400 uppercase">London (BST)</Text>
+              <Text className="text-base font-bold text-neutral-800 mt-0.5">
                 {londonTime || '--:-- --'}
               </Text>
-              <Text className="text-[8px] text-slate-400 mt-0.5 font-bold">Anjali (Daughter)</Text>
+              <Text className="text-[9px] text-neutral-400 mt-0.5 font-semibold">Anjali (You)</Text>
             </View>
 
-            <View className="flex-1 bg-[#f8f9ff] p-4 rounded-2xl items-center border border-slate-100">
-              <View className="w-8 h-8 rounded-full bg-[#d2f4ef] items-center justify-center mb-2">
-                <Clock size={16} color="#006a61" />
+            <View className="flex-1 bg-neutral-50 p-4 rounded-xl items-center border border-neutral-100">
+              <View className="w-8 h-8 rounded-full bg-emerald-50 items-center justify-center mb-2">
+                <Clock size={16} color="#34c759" />
               </View>
-              <Text className="text-[9px] font-black text-slate-400 uppercase">Chennai (IST)</Text>
-              <Text className="text-base font-black text-slate-800 mt-0.5">
+              <Text className="text-[9px] font-bold text-neutral-400 uppercase">Chennai (IST)</Text>
+              <Text className="text-base font-bold text-neutral-800 mt-0.5">
                 {chennaiTime || '--:-- --'}
               </Text>
-              <Text className="text-[8px] text-slate-400 mt-0.5 font-bold">Ramesh (Dad)</Text>
+              <Text className="text-[9px] text-neutral-400 mt-0.5 font-semibold">Ramesh (Dad)</Text>
             </View>
           </View>
         </View>
 
         {/* Telemetry Streams */}
-        <View className="bg-white border border-[#dee9fc] rounded-[24px] p-5 shadow-sm space-y-4">
-          <View className="flex-row items-center justify-between border-b border-slate-100 pb-3">
-            <Text className="text-[10px] font-black text-slate-400 tracking-wider uppercase">
+        <View className="bg-white rounded-2xl p-5 shadow-sm shadow-neutral-100 space-y-4">
+          <View className="flex-row items-center justify-between border-b border-neutral-100 pb-3">
+            <Text className="text-[10px] font-bold text-neutral-400 tracking-wider uppercase">
               Connected Telemetry Streams
             </Text>
             <View className="flex-row items-center gap-1.5">
-              <View className="w-2 h-2 rounded-full bg-[#006a61] animate-pulse" />
-              <Text className="text-[8px] font-black text-[#006a61] uppercase">Ingest: Active</Text>
+              <View className="w-2 h-2 rounded-full bg-[#34c759]" />
+              <Text className="text-[8px] font-bold text-[#34c759] uppercase">Ingest: Active</Text>
             </View>
           </View>
 
           <View className="space-y-3">
-            <View className="flex-row items-center justify-between p-3.5 bg-[#f8f9ff] rounded-2xl border border-slate-50">
+            <View className="flex-row items-center justify-between p-3.5 bg-neutral-50 rounded-xl border border-neutral-100/50">
               <View className="flex-row items-center gap-3">
-                <View className="w-8 h-8 rounded-full bg-[#eff4ff] items-center justify-center">
-                  <Radio size={16} color="#2a14b4" />
+                <View className="w-8 h-8 rounded-full bg-blue-50 items-center justify-center">
+                  <Radio size={16} color="#007aff" />
                 </View>
                 <View>
-                  <Text className="text-xs font-black text-slate-800">Dexcom G7 CGM</Text>
-                  <Text className="text-[9px] text-slate-400 font-bold">
+                  <Text className="text-xs font-bold text-neutral-800">Dexcom G7 CGM</Text>
+                  <Text className="text-[9px] text-neutral-400 font-semibold mt-0.5">
                     Lakshmi (Mom) • Bluetooth stream
                   </Text>
                 </View>
               </View>
               <View className="items-end">
-                <Text className="text-xs font-black text-[#006a61]">98 mg/dL</Text>
-                <Text className="text-[8px] text-slate-400 font-bold mt-0.5">Synced 5m ago</Text>
+                <Text className="text-xs font-bold text-[#34c759]">98 mg/dL</Text>
+                <Text className="text-[8px] text-neutral-400 font-semibold mt-0.5">
+                  Synced 5m ago
+                </Text>
               </View>
             </View>
 
-            <View className="flex-row items-center justify-between p-3.5 bg-[#f8f9ff] rounded-2xl border border-slate-50">
+            <View className="flex-row items-center justify-between p-3.5 bg-neutral-50 rounded-xl border border-neutral-100/50">
               <View className="flex-row items-center gap-3">
-                <View className="w-8 h-8 rounded-full bg-[#ffdad6] items-center justify-center">
-                  <Heart size={16} color="#ba1a1a" fill="#ba1a1a" />
+                <View className="w-8 h-8 rounded-full bg-red-50 items-center justify-center">
+                  <Heart size={16} color="#ff3b30" fill="#ff3b30" />
                 </View>
                 <View>
-                  <Text className="text-xs font-black text-slate-800">Omron Blood Pressure</Text>
-                  <Text className="text-[9px] text-slate-400 font-bold">
+                  <Text className="text-xs font-bold text-neutral-800">Omron Blood Pressure</Text>
+                  <Text className="text-[9px] text-neutral-400 font-semibold mt-0.5">
                     Ramesh (Dad) • Smart Hub sync
                   </Text>
                 </View>
               </View>
               <View className="items-end">
-                <Text className="text-xs font-black text-[#ba1a1a]">138/88 mmHg</Text>
-                <Text className="text-[8px] text-slate-400 font-bold mt-0.5">Synced 45m ago</Text>
+                <Text className="text-xs font-bold text-[#ff3b30]">138/88 mmHg</Text>
+                <Text className="text-[8px] text-neutral-400 font-semibold mt-0.5">
+                  Synced 45m ago
+                </Text>
               </View>
             </View>
           </View>
         </View>
 
-        {/* Care Network status */}
-        <View className="bg-white border border-[#dee9fc] rounded-[24px] p-5 shadow-sm space-y-3.5">
-          <Text className="text-[10px] font-black text-slate-400 uppercase tracking-wider border-b border-slate-100 pb-3">
-            Active Care Team Coordination
+        {/* Local Care Circle Network */}
+        <View className="bg-white rounded-2xl p-5 shadow-sm shadow-neutral-100 space-y-4">
+          <Text className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider border-b border-neutral-100 pb-3">
+            Local Care Circle Network
           </Text>
-          <View className="space-y-4 pt-1.5">
+
+          <View className="space-y-3">
             {CARE_NETWORK_TEAM.map((member) => (
-              <View key={member.id} className="flex-row items-center justify-between">
+              <View
+                key={member.id}
+                className="flex-row items-center justify-between bg-neutral-50 border border-neutral-100/50 p-3 rounded-xl"
+              >
                 <View className="flex-row items-center gap-3">
-                  <View className="relative">
-                    <Image
-                      source={{ uri: member.avatar }}
-                      className="w-9 h-9 rounded-full object-cover border border-[#dee9fc]"
-                    />
-                    {member.online && (
-                      <View className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#006a61] border-2 border-white rounded-full" />
-                    )}
-                  </View>
+                  <Image source={{ uri: member.avatar }} className="w-9 h-9 rounded-full" />
                   <View>
-                    <Text className="text-xs font-black text-slate-800">{member.name}</Text>
-                    <Text className="text-[9px] text-[#464554] font-bold">
-                      {member.role} • {member.location.split(' ')[0]}
+                    <Text className="text-xs font-bold text-neutral-800">{member.name}</Text>
+                    <Text className="text-[9px] text-neutral-400 font-semibold mt-0.5">
+                      {member.role} • {member.location}
                     </Text>
                   </View>
                 </View>
-                <View className="bg-[#d2f4ef] px-2 py-0.5 rounded-full">
-                  <Text className="text-[8px] font-black text-[#006a61] uppercase">
+                <View
+                  className={`px-2.5 py-0.5 rounded-full ${member.online ? 'bg-emerald-50' : 'bg-neutral-100'}`}
+                >
+                  <Text
+                    className={`text-[8px] font-bold uppercase ${member.online ? 'text-[#34c759]' : 'text-neutral-500'}`}
+                  >
                     {member.online ? 'Online' : 'Offline'}
                   </Text>
                 </View>
@@ -187,32 +189,39 @@ export const SyncDashboard: React.FC<SyncDashboardProps> = ({
           </View>
         </View>
 
-        {/* Sync logs */}
-        <View className="bg-white border border-[#dee9fc] rounded-[24px] p-5 shadow-sm space-y-3.5 mb-12">
-          <Text className="text-[10px] font-black text-slate-400 uppercase tracking-wider border-b border-slate-100 pb-3">
-            Device Ingestion Logs
+        {/* Activity Sync Logs */}
+        <View className="space-y-2">
+          <Text className="text-xs font-bold text-neutral-400 uppercase tracking-wider pl-1">
+            Activity Sync Logs
           </Text>
-          <View className="space-y-3 pt-1.5">
-            {syncLogs.slice(0, 5).map((log) => (
-              <View
-                key={log.id}
-                className="flex-row justify-between items-start py-2 border-b border-slate-50 last:border-0 last:pb-0"
-              >
-                <View className="space-y-0.5 flex-1 pr-2">
-                  <View className="flex-row items-center gap-1.5">
-                    <Text className="font-black text-slate-800 text-[11px]">{log.device}</Text>
-                    <Text className="text-[9px] text-slate-400 font-bold">• {log.user}</Text>
+
+          <View className="bg-white rounded-2xl p-5 shadow-sm shadow-neutral-100 space-y-3.5">
+            {syncLogs.slice(0, 5).map((log) => {
+              const isOk = log.status === 'success' || log.status === 'synced';
+              const statusCol = isOk ? 'text-[#34c759]' : 'text-[#ff3b30]';
+              return (
+                <View
+                  key={log.id}
+                  className="flex-row items-center justify-between border-b border-neutral-100 pb-2.5 last:border-0 last:pb-0"
+                >
+                  <View className="space-y-0.5">
+                    <Text className="text-xs font-bold text-neutral-800">
+                      {log.device} ({log.value})
+                    </Text>
+                    <Text className="text-[9px] text-neutral-400 font-semibold mt-0.5">
+                      {log.time} · Ingested by {log.user}
+                    </Text>
                   </View>
-                  <Text className="text-[10px] text-slate-500 font-medium">{log.value}</Text>
+                  <Text className={`text-[10px] font-bold uppercase ${statusCol}`}>
+                    {log.status}
+                  </Text>
                 </View>
-                <View className="items-end shrink-0">
-                  <Text className="text-[9px] text-slate-400 font-black">{log.time}</Text>
-                  <View className="w-1.5 h-1.5 rounded-full bg-[#006a61] mt-1" />
-                </View>
-              </View>
-            ))}
+              );
+            })}
           </View>
         </View>
+
+        <View className="h-24" />
       </View>
     </ScrollView>
   );

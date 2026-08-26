@@ -534,6 +534,7 @@ export const HealthDashboard: React.FC<HealthDashboardProps> = ({
               <Text className="text-xs font-bold text-neutral-800 text-center">Add Med</Text>
             </TouchableOpacity>
           </View>
+          <View className="h-28" />
         </View>
       </ScrollView>
     </View>

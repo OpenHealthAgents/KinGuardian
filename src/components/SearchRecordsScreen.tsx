@@ -142,29 +142,29 @@ export const SearchRecordsScreen: React.FC<SearchRecordsScreenProps> = ({
 
   if (activeSegment === 'vault') {
     return (
-      <View className="flex-1 bg-[#fbfaf7]">
+      <View className="flex-1 bg-[#f2f2f7]">
         {/* Vault Header Segment */}
-        <View className="bg-[#fbfaf7] border-b border-[#e2dfd9] pt-4 pb-2 px-5 space-y-3">
+        <View className="bg-white border-b border-neutral-100 pt-5 pb-3 px-5 space-y-3">
           <View className="flex-row items-center justify-between">
-            <TouchableOpacity onPress={onBack} className="p-2 bg-slate-100 rounded-full">
-              <ArrowLeft size={16} color="#464554" />
+            <TouchableOpacity onPress={onBack} className="p-1.5 bg-neutral-100 rounded-full">
+              <ArrowLeft size={16} color="#8e8e93" />
             </TouchableOpacity>
-            <Text className="text-base font-black text-[#2a14b4]">Health Records</Text>
-            <View className="w-9 h-9" />
+            <Text className="text-lg font-bold text-neutral-900">Health Records</Text>
+            <View className="w-8 h-8" />
           </View>
 
-          <View className="flex-row bg-[#eff4ff] p-0.5 rounded-full border border-[#dee9fc]">
+          <View className="flex-row bg-neutral-200/60 p-0.5 rounded-xl">
             <TouchableOpacity
               onPress={() => setActiveSegment('search')}
-              className="flex-1 py-2 rounded-full items-center justify-center"
+              className="flex-1 py-1.5 rounded-lg items-center justify-center"
             >
-              <Text className="text-xs font-bold text-[#464554]">Health Timeline</Text>
+              <Text className="text-xs font-semibold text-neutral-500">Health Timeline</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => setActiveSegment('vault')}
-              className="flex-1 py-2 rounded-full items-center justify-center bg-[#4338ca]"
+              className="flex-1 py-1.5 rounded-lg items-center justify-center bg-white shadow-sm"
             >
-              <Text className="text-xs font-black text-white">Document Vault</Text>
+              <Text className="text-xs font-bold text-neutral-900">Document Vault</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -180,59 +180,60 @@ export const SearchRecordsScreen: React.FC<SearchRecordsScreenProps> = ({
   }
 
   return (
-    <ScrollView className="flex-1 bg-[#fbfaf7] pb-24">
+    <ScrollView className="flex-1 bg-[#f2f2f7]">
       {/* Search Header Segment */}
-      <View className="bg-[#fbfaf7] border-b border-[#e2dfd9] pt-4 pb-3 px-5 space-y-3">
+      <View className="bg-white border-b border-neutral-100 pt-5 pb-3 px-5 space-y-3">
         <View className="flex-row items-center justify-between">
-          <TouchableOpacity onPress={onBack} className="p-2 bg-slate-100 rounded-full">
-            <ArrowLeft size={16} color="#464554" />
+          <TouchableOpacity onPress={onBack} className="p-1.5 bg-neutral-100 rounded-full">
+            <ArrowLeft size={16} color="#8e8e93" />
           </TouchableOpacity>
-          <Text className="text-base font-black text-[#2a14b4]">Health Timeline</Text>
-          <View className="w-9 h-9" />
+          <Text className="text-lg font-bold text-neutral-900">Health Timeline</Text>
+          <View className="w-8 h-8" />
         </View>
 
-        <View className="flex-row bg-[#eff4ff] p-0.5 rounded-full border border-[#dee9fc]">
+        <View className="flex-row bg-neutral-200/60 p-0.5 rounded-xl">
           <TouchableOpacity
             onPress={() => setActiveSegment('search')}
-            className="flex-1 py-2 rounded-full items-center justify-center bg-[#4338ca]"
+            className="flex-1 py-1.5 rounded-lg items-center justify-center bg-white shadow-sm"
           >
-            <Text className="text-xs font-black text-white">Health Timeline</Text>
+            <Text className="text-xs font-bold text-neutral-900">Health Timeline</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setActiveSegment('vault')}
-            className="flex-1 py-2 rounded-full items-center justify-center"
+            className="flex-1 py-1.5 rounded-lg items-center justify-center"
           >
-            <Text className="text-xs font-bold text-[#464554]">Document Vault</Text>
+            <Text className="text-xs font-semibold text-neutral-500">Document Vault</Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <View className="p-5 space-y-6">
         {/* Search Input bar */}
-        <View className="relative flex-row items-center bg-slate-100 rounded-2xl px-4 py-1 border border-slate-100 focus:border-[#4338ca]">
-          <Search size={16} color="#777586" />
+        <View className="relative flex-row items-center bg-white rounded-xl px-4 py-0.5 border border-neutral-200 shadow-xs">
+          <Search size={15} color="#8e8e93" />
           <TextInput
             value={searchQuery}
             onChangeText={setSearchQuery}
             placeholder="Search timeline & reports..."
-            className="flex-1 px-3 py-3.5 text-xs text-slate-800"
+            placeholderTextColor="#8e8e93"
+            className="flex-1 px-3 py-3 text-xs text-neutral-800 font-semibold"
           />
           {searchQuery ? (
             <TouchableOpacity onPress={() => setSearchQuery('')}>
-              <X size={14} color="#ba1a1a" />
+              <X size={14} color="#ff3b30" />
             </TouchableOpacity>
           ) : (
             <TouchableOpacity
               onPress={() => onAskAIQuery('Search all recent clinical notes and medications')}
             >
-              <Mic size={14} color="#777586" />
+              <Mic size={14} color="#8e8e93" />
             </TouchableOpacity>
           )}
         </View>
 
         {/* Timeline Horizontal Filters */}
         <View className="space-y-2">
-          <Text className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+          <Text className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest pl-1">
             Filters
           </Text>
           <ScrollView
@@ -246,13 +247,13 @@ export const SearchRecordsScreen: React.FC<SearchRecordsScreenProps> = ({
                 onPress={() => setTimelineFilter(filter.id)}
                 className={`px-4 py-2 rounded-full border ${
                   timelineFilter === filter.id
-                    ? 'bg-[#2a14b4] border-[#2a14b4]'
-                    : 'bg-white border-[#e2dfd9]'
+                    ? 'bg-[#007aff] border-[#007aff]'
+                    : 'bg-white border-neutral-200'
                 }`}
               >
                 <Text
-                  className={`text-xs font-black ${
-                    timelineFilter === filter.id ? 'text-white' : 'text-slate-700'
+                  className={`text-xs font-bold ${
+                    timelineFilter === filter.id ? 'text-white' : 'text-neutral-700'
                   }`}
                 >
                   {filter.label}
@@ -312,27 +313,27 @@ export const SearchRecordsScreen: React.FC<SearchRecordsScreenProps> = ({
         {/* APPROACHABLE TIMELINE BLOCK */}
         {!searchQuery && (
           <View className="space-y-4">
-            <Text className="text-sm font-black text-[#121c2a] uppercase tracking-wider">
+            <Text className="text-xs font-bold text-neutral-400 uppercase tracking-widest pl-1">
               Timeline
             </Text>
 
             {Object.keys(groupedTimeline).length === 0 ? (
-              <View className="bg-white rounded-2xl p-6 border border-[#e2dfd9] items-center justify-center">
-                <Text className="text-xs font-bold text-slate-400">
+              <View className="bg-white rounded-2xl p-6 border border-neutral-200/80 items-center justify-center">
+                <Text className="text-xs font-semibold text-neutral-400">
                   No items match this filter.
                 </Text>
               </View>
             ) : (
               <View className="space-y-6 relative pl-3">
                 {/* Visual Timeline vertical line */}
-                <View className="absolute left-[20px] top-[10px] bottom-[10px] w-0.5 bg-[#e2dfd9]" />
+                <View className="absolute left-[20px] top-[10px] bottom-[10px] w-0.5 bg-neutral-200" />
 
                 {Object.keys(groupedTimeline).map((date) => (
                   <View key={date} className="space-y-3.5">
                     {/* Date Heading */}
                     <View className="flex-row items-center gap-2">
-                      <View className="w-4 h-4 rounded-full bg-[#fbfaf7] border-[3px] border-[#2a14b4] z-10" />
-                      <Text className="text-xs font-black text-slate-800">{date}</Text>
+                      <View className="w-4 h-4 rounded-full bg-white border-[3px] border-[#007aff] z-10" />
+                      <Text className="text-xs font-bold text-neutral-800">{date}</Text>
                     </View>
 
                     {/* Timeline group items */}
@@ -340,22 +341,22 @@ export const SearchRecordsScreen: React.FC<SearchRecordsScreenProps> = ({
                       {groupedTimeline[date].map((item) => {
                         const iconColor =
                           item.category === 'medication'
-                            ? '#2a14b4'
+                            ? '#007aff'
                             : item.category === 'vital'
-                              ? '#ba1a1a'
+                              ? '#ff3b30'
                               : item.category === 'appointment'
-                                ? '#d97706'
+                                ? '#ff9500'
                                 : item.category === 'document'
-                                  ? '#006a61'
-                                  : '#708090';
+                                  ? '#34c759'
+                                  : '#8e8e93';
 
                         return (
                           <View
                             key={item.id}
-                            className="bg-white rounded-2xl p-4 border border-[#e2dfd9] flex-row items-center justify-between shadow-xs"
+                            className="bg-white rounded-2xl p-4 border border-neutral-100 flex-row items-center justify-between shadow-xs"
                           >
                             <View className="flex-row items-center gap-3.5">
-                              <View className="w-8 h-8 rounded-full bg-slate-50 items-center justify-center border border-slate-100">
+                              <View className="w-8 h-8 rounded-full bg-neutral-50 items-center justify-center border border-neutral-100">
                                 {item.category === 'medication' ? (
                                   <Pill size={14} color={iconColor} />
                                 ) : item.category === 'vital' ? (
@@ -369,15 +370,15 @@ export const SearchRecordsScreen: React.FC<SearchRecordsScreenProps> = ({
                                 )}
                               </View>
                               <View className="space-y-0.5">
-                                <Text className="text-xs font-black text-slate-800">
+                                <Text className="text-xs font-bold text-neutral-800">
                                   {item.title}
                                 </Text>
-                                <Text className="text-[10px] text-slate-400 font-semibold">
+                                <Text className="text-[10px] text-neutral-400 font-semibold">
                                   {item.subtitle}
                                 </Text>
                               </View>
                             </View>
-                            <Text className="text-[9px] font-black text-slate-400">
+                            <Text className="text-[9px] font-bold text-neutral-400">
                               {item.time}
                             </Text>
                           </View>
@@ -394,19 +395,19 @@ export const SearchRecordsScreen: React.FC<SearchRecordsScreenProps> = ({
         {/* Recent Searches */}
         {!searchQuery && (
           <View className="space-y-3 pb-12">
-            <View className="flex-row items-center justify-between border-b border-[#e2dfd9] pb-2">
-              <Text className="text-[10px] font-black text-slate-400 uppercase tracking-wider">
+            <View className="flex-row items-center justify-between border-b border-neutral-200/80 pb-2">
+              <Text className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
                 Recent Searches
               </Text>
               {recentSearches.length > 0 && (
                 <TouchableOpacity onPress={onClearRecentSearches}>
-                  <Text className="text-xs font-bold text-[#2a14b4]">Clear All</Text>
+                  <Text className="text-xs font-bold text-[#007aff]">Clear All</Text>
                 </TouchableOpacity>
               )}
             </View>
 
             {recentSearches.length === 0 ? (
-              <Text className="text-[10px] text-slate-400 italic font-bold">
+              <Text className="text-[10px] text-neutral-400 italic font-bold">
                 No recent searches.
               </Text>
             ) : (
@@ -415,14 +416,14 @@ export const SearchRecordsScreen: React.FC<SearchRecordsScreenProps> = ({
                   <TouchableOpacity
                     key={idx}
                     onPress={() => setSearchQuery(item)}
-                    className="bg-white rounded-2xl p-3 border border-slate-50 flex-row justify-between items-center"
+                    className="bg-white rounded-2xl p-3 border border-neutral-100 flex-row justify-between items-center"
                   >
                     <View className="flex-row items-center gap-3">
-                      <History size={14} color="#777586" />
-                      <Text className="text-xs font-bold text-slate-800">{item}</Text>
+                      <History size={14} color="#8e8e93" />
+                      <Text className="text-xs font-bold text-neutral-800">{item}</Text>
                     </View>
                     <TouchableOpacity onPress={() => onRemoveRecentSearch(item)}>
-                      <X size={14} color="#777586" />
+                      <X size={14} color="#8e8e93" />
                     </TouchableOpacity>
                   </TouchableOpacity>
                 ))}
@@ -430,6 +431,7 @@ export const SearchRecordsScreen: React.FC<SearchRecordsScreenProps> = ({
             )}
           </View>
         )}
+        <View className="h-28" />
       </View>
     </ScrollView>
   );

@@ -35,18 +35,18 @@ export const Avatar: React.FC<AvatarProps> = ({
       {url ? (
         <Image
           source={{ uri: url }}
-          className={`w-full h-full rounded-full object-cover border border-[#dee9fc]`}
+          className={`w-full h-full rounded-full border border-neutral-100`}
         />
       ) : (
-        <View className="w-full h-full rounded-full bg-[#eff4ff] items-center justify-center border border-[#dee9fc]">
-          <Text className={`font-black text-[#2a14b4] ${textSizeClass}`}>{initials}</Text>
+        <View className="w-full h-full rounded-full bg-blue-50 items-center justify-center border border-neutral-100">
+          <Text className={`font-bold text-[#007aff] ${textSizeClass}`}>{initials}</Text>
         </View>
       )}
 
       {status !== 'none' && (
         <View
           className={`absolute bottom-0 right-0 rounded-full border border-white ${
-            status === 'online' ? 'bg-[#006a61]' : 'bg-[#d97706]'
+            status === 'online' ? 'bg-[#34c759]' : 'bg-[#ff9500]'
           } ${statusDotSize}`}
         />
       )}

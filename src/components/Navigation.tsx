@@ -15,28 +15,21 @@ export const BottomNavBar: React.FC<NavigationProps> = ({
   activeTab,
   currentScreen,
   onTabChange,
-  onOpenQuickActions: _onOpenQuickActions,
   onOpenAskAI
 }) => {
   if (currentScreen === 'onboarding') return null;
 
   return (
-    <View className="absolute bottom-0 left-0 right-0 z-40 bg-white border-t border-[#dee9fc] flex-row justify-around items-end py-2 px-3 shadow-lg">
+    <View className="absolute bottom-0 left-0 right-0 z-40 bg-white/95 border-t border-neutral-200/80 flex-row justify-around items-end py-1.5 px-3 shadow-sm">
       {/* Tab 1: Home */}
       <TouchableOpacity
         onPress={() => onTabChange('home')}
-        className="items-center justify-center py-2.5 w-14"
+        className="items-center justify-center py-1.5 w-14"
       >
-        <View
-          className={`px-2.5 py-1 rounded-full items-center justify-center ${
-            activeTab === 'home' ? 'bg-[#2a14b4]/10' : ''
-          }`}
-        >
-          <Home size={22} color={activeTab === 'home' ? '#2a14b4' : '#708090'} />
-        </View>
+        <Home size={20} color={activeTab === 'home' ? '#007aff' : '#8e8e93'} />
         <Text
-          className={`text-[10px] font-black uppercase mt-1 ${
-            activeTab === 'home' ? 'text-[#2a14b4]' : 'text-[#708090]'
+          className={`text-[9px] font-semibold mt-1 ${
+            activeTab === 'home' ? 'text-[#007aff]' : 'text-[#8e8e93]'
           }`}
         >
           Home
@@ -46,18 +39,12 @@ export const BottomNavBar: React.FC<NavigationProps> = ({
       {/* Tab 2: Parents */}
       <TouchableOpacity
         onPress={() => onTabChange('parents')}
-        className="items-center justify-center py-2.5 w-14"
+        className="items-center justify-center py-1.5 w-14"
       >
-        <View
-          className={`px-2.5 py-1 rounded-full items-center justify-center ${
-            activeTab === 'parents' ? 'bg-[#2a14b4]/10' : ''
-          }`}
-        >
-          <Users size={22} color={activeTab === 'parents' ? '#2a14b4' : '#708090'} />
-        </View>
+        <Users size={20} color={activeTab === 'parents' ? '#007aff' : '#8e8e93'} />
         <Text
-          className={`text-[10px] font-black uppercase mt-1 ${
-            activeTab === 'parents' ? 'text-[#2a14b4]' : 'text-[#708090]'
+          className={`text-[9px] font-semibold mt-1 ${
+            activeTab === 'parents' ? 'text-[#007aff]' : 'text-[#8e8e93]'
           }`}
         >
           Parents
@@ -65,28 +52,22 @@ export const BottomNavBar: React.FC<NavigationProps> = ({
       </TouchableOpacity>
 
       {/* Tab 3: Ask AI (Center Action Button) */}
-      <TouchableOpacity onPress={onOpenAskAI} className="items-center justify-center w-16 -top-3.5">
-        <View className="w-14 h-14 rounded-full bg-[#2a14b4] items-center justify-center shadow-lg border-4 border-white active:scale-95">
-          <Sparkles size={26} color="#ffffff" />
+      <TouchableOpacity onPress={onOpenAskAI} className="items-center justify-center w-15 -top-3">
+        <View className="w-12 h-12 rounded-full bg-[#007aff] items-center justify-center shadow-md border-4 border-white active:scale-95">
+          <Sparkles size={20} color="#ffffff" />
         </View>
-        <Text className="text-[10px] font-black uppercase text-[#2a14b4] mt-0.5">Ask</Text>
+        <Text className="text-[9px] font-semibold text-[#007aff] mt-0.5">Ask AI</Text>
       </TouchableOpacity>
 
       {/* Tab 4: Care */}
       <TouchableOpacity
         onPress={() => onTabChange('care')}
-        className="items-center justify-center py-2.5 w-14"
+        className="items-center justify-center py-1.5 w-14"
       >
-        <View
-          className={`px-2.5 py-1 rounded-full items-center justify-center ${
-            activeTab === 'care' ? 'bg-[#2a14b4]/10' : ''
-          }`}
-        >
-          <Activity size={22} color={activeTab === 'care' ? '#2a14b4' : '#708090'} />
-        </View>
+        <Activity size={20} color={activeTab === 'care' ? '#007aff' : '#8e8e93'} />
         <Text
-          className={`text-[10px] font-black uppercase mt-1 ${
-            activeTab === 'care' ? 'text-[#2a14b4]' : 'text-[#708090]'
+          className={`text-[9px] font-semibold mt-1 ${
+            activeTab === 'care' ? 'text-[#007aff]' : 'text-[#8e8e93]'
           }`}
         >
           Care
@@ -96,18 +77,12 @@ export const BottomNavBar: React.FC<NavigationProps> = ({
       {/* Tab 5: Profile */}
       <TouchableOpacity
         onPress={() => onTabChange('profile')}
-        className="items-center justify-center py-2.5 w-14"
+        className="items-center justify-center py-1.5 w-14"
       >
-        <View
-          className={`px-2.5 py-1 rounded-full items-center justify-center ${
-            activeTab === 'profile' ? 'bg-[#2a14b4]/10' : ''
-          }`}
-        >
-          <User size={22} color={activeTab === 'profile' ? '#2a14b4' : '#708090'} />
-        </View>
+        <User size={20} color={activeTab === 'profile' ? '#007aff' : '#8e8e93'} />
         <Text
-          className={`text-[10px] font-black uppercase mt-1 ${
-            activeTab === 'profile' ? 'text-[#2a14b4]' : 'text-[#708090]'
+          className={`text-[9px] font-semibold mt-1 ${
+            activeTab === 'profile' ? 'text-[#007aff]' : 'text-[#8e8e93]'
           }`}
         >
           Profile
@@ -124,14 +99,14 @@ interface ParentNavigationProps {
 
 export const ParentBottomNavBar: React.FC<ParentNavigationProps> = ({ activeTab, onTabChange }) => {
   return (
-    <View className="absolute bottom-0 left-0 right-0 z-40 bg-[#fffbeb] border-t border-[#fde68a] flex-row justify-around items-center py-3 px-3 shadow-lg">
+    <View className="absolute bottom-0 left-0 right-0 z-40 bg-white/95 border-t border-neutral-200/80 flex-row justify-around items-center py-2 px-3 shadow-sm">
       <TouchableOpacity
         onPress={() => onTabChange('home')}
-        className="items-center justify-center py-2.5 w-16"
+        className="items-center justify-center py-1.5 w-16"
       >
-        <Home size={28} color={activeTab === 'home' ? '#d97706' : '#78350f'} />
+        <Home size={24} color={activeTab === 'home' ? '#007aff' : '#8e8e93'} />
         <Text
-          className={`text-xs font-black mt-1 ${activeTab === 'home' ? 'text-[#d97706]' : 'text-[#78350f]'}`}
+          className={`text-[10px] font-semibold mt-1 ${activeTab === 'home' ? 'text-[#007aff]' : 'text-[#8e8e93]'}`}
         >
           Home
         </Text>
@@ -139,11 +114,11 @@ export const ParentBottomNavBar: React.FC<ParentNavigationProps> = ({ activeTab,
 
       <TouchableOpacity
         onPress={() => onTabChange('medicines')}
-        className="items-center justify-center py-2.5 w-16"
+        className="items-center justify-center py-1.5 w-16"
       >
-        <Pill size={28} color={activeTab === 'medicines' ? '#d97706' : '#78350f'} />
+        <Pill size={24} color={activeTab === 'medicines' ? '#007aff' : '#8e8e93'} />
         <Text
-          className={`text-xs font-black mt-1 ${activeTab === 'medicines' ? 'text-[#d97706]' : 'text-[#78350f]'}`}
+          className={`text-[10px] font-semibold mt-1 ${activeTab === 'medicines' ? 'text-[#007aff]' : 'text-[#8e8e93]'}`}
         >
           Medicines
         </Text>
@@ -151,11 +126,11 @@ export const ParentBottomNavBar: React.FC<ParentNavigationProps> = ({ activeTab,
 
       <TouchableOpacity
         onPress={() => onTabChange('ask')}
-        className="items-center justify-center py-2.5 w-16"
+        className="items-center justify-center py-1.5 w-16"
       >
-        <Mic size={28} color={activeTab === 'ask' ? '#3b82f6' : '#78350f'} />
+        <Mic size={24} color={activeTab === 'ask' ? '#af52de' : '#8e8e93'} />
         <Text
-          className={`text-xs font-black mt-1 ${activeTab === 'ask' ? 'text-[#3b82f6]' : 'text-[#78350f]'}`}
+          className={`text-[10px] font-semibold mt-1 ${activeTab === 'ask' ? 'text-[#af52de]' : 'text-[#8e8e93]'}`}
         >
           Ask AI
         </Text>
@@ -163,11 +138,11 @@ export const ParentBottomNavBar: React.FC<ParentNavigationProps> = ({ activeTab,
 
       <TouchableOpacity
         onPress={() => onTabChange('profile')}
-        className="items-center justify-center py-2.5 w-16"
+        className="items-center justify-center py-1.5 w-16"
       >
-        <User size={28} color={activeTab === 'profile' ? '#d97706' : '#78350f'} />
+        <User size={24} color={activeTab === 'profile' ? '#007aff' : '#8e8e93'} />
         <Text
-          className={`text-xs font-black mt-1 ${activeTab === 'profile' ? 'text-[#d97706]' : 'text-[#78350f]'}`}
+          className={`text-[10px] font-semibold mt-1 ${activeTab === 'profile' ? 'text-[#007aff]' : 'text-[#8e8e93]'}`}
         >
           Profile
         </Text>

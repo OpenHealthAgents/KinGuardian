@@ -16,41 +16,41 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  const baseStyle = 'flex-row items-center justify-center rounded-2xl active:opacity-90';
+  const baseStyle = 'flex-row items-center justify-center active:opacity-80';
 
-  let variantStyle = 'bg-[#2a14b4] border border-transparent';
-  let textStyle = 'text-white font-black';
+  let variantStyle = 'bg-[#007aff] border border-transparent';
+  let textStyle = 'text-white font-semibold';
 
   if (variant === 'secondary') {
-    variantStyle = 'bg-[#eff4ff] border border-transparent';
-    textStyle = 'text-[#2a14b4] font-black';
+    variantStyle = 'bg-neutral-100 border border-transparent';
+    textStyle = 'text-[#007aff] font-semibold';
   } else if (variant === 'parent') {
-    variantStyle = 'bg-[#d97706] border-2 border-[#b45309]';
-    textStyle = 'text-white font-black';
+    variantStyle = 'bg-[#34c759] border border-transparent';
+    textStyle = 'text-white font-bold';
   } else if (variant === 'alert') {
-    variantStyle = 'bg-[#ba1a1a] border border-transparent';
-    textStyle = 'text-white font-black';
+    variantStyle = 'bg-[#ff3b30] border border-transparent';
+    textStyle = 'text-white font-semibold';
   } else if (variant === 'outline') {
-    variantStyle = 'bg-transparent border border-[#dee9fc]';
-    textStyle = 'text-[#464554] font-bold';
+    variantStyle = 'bg-transparent border border-neutral-250';
+    textStyle = 'text-neutral-800 font-semibold';
   }
 
-  let sizeStyle = 'px-4 py-3';
-  let textSizeStyle = 'text-xs';
+  let sizeStyle = 'px-4.5 py-3.5 rounded-xl';
+  let textSizeStyle = 'text-xs md:text-sm';
 
   if (size === 'sm') {
-    sizeStyle = 'px-3 py-1.5 rounded-xl';
-    textSizeStyle = 'text-[10px]';
+    sizeStyle = 'px-3 py-2 rounded-lg';
+    textSizeStyle = 'text-[11px]';
   } else if (size === 'lg') {
-    sizeStyle = 'px-6 py-4.5 rounded-3xl';
-    textSizeStyle = 'text-sm md:text-base';
+    sizeStyle = 'px-6 py-4.5 rounded-2xl';
+    textSizeStyle = 'text-base';
   }
 
   const combinedClass = `${baseStyle} ${variantStyle} ${sizeStyle} ${className}`;
 
   return (
     <TouchableOpacity
-      activeOpacity={0.8}
+      activeOpacity={0.7}
       className={combinedClass}
       disabled={loading || props.disabled}
       {...props}
@@ -58,7 +58,7 @@ export const Button: React.FC<ButtonProps> = ({
       {loading ? (
         <ActivityIndicator
           size="small"
-          color={variant === 'secondary' || variant === 'outline' ? '#2a14b4' : '#ffffff'}
+          color={variant === 'secondary' || variant === 'outline' ? '#007aff' : '#ffffff'}
         />
       ) : (
         <Text className={`${textStyle} ${textSizeStyle} text-center`}>{title}</Text>

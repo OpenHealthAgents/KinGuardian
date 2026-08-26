@@ -115,37 +115,37 @@ export const CareView: React.FC<CareViewProps> = ({
     { name: 'Osteocare Calcium', dose: 'ER', time: '8:00 PM', status: 'Upcoming' }
   ];
 
-  // Helper Switcher Render
+  // Segmented Control Switcher
   const renderSwitcher = () => (
-    <View className="flex-row bg-[#eff4ff] p-0.5 rounded-full border border-[#dee9fc]">
+    <View className="flex-row bg-neutral-200/60 p-0.5 rounded-xl border border-neutral-200/30">
       <TouchableOpacity
         onPress={() => setActiveSegment('care')}
-        className={`flex-1 py-2 rounded-full items-center justify-center ${activeSegment === 'care' ? 'bg-[#2a14b4]' : ''}`}
+        className={`flex-1 py-2 rounded-lg items-center justify-center ${activeSegment === 'care' ? 'bg-white shadow-xs' : ''}`}
       >
         <Text
-          className={`text-[10px] font-black uppercase ${activeSegment === 'care' ? 'text-white' : 'text-[#464554]'}`}
+          className={`text-xs font-semibold ${activeSegment === 'care' ? 'text-neutral-900 font-bold' : 'text-neutral-500'}`}
         >
           Care
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => setActiveSegment('plan')}
-        className={`flex-1 py-2 rounded-full items-center justify-center ${activeSegment === 'plan' ? 'bg-[#2a14b4]' : ''}`}
+        className={`flex-1 py-2 rounded-lg items-center justify-center ${activeSegment === 'plan' ? 'bg-white shadow-xs' : ''}`}
       >
         <Text
-          className={`text-[10px] font-black uppercase ${activeSegment === 'plan' ? 'text-white' : 'text-[#464554]'}`}
+          className={`text-xs font-semibold ${activeSegment === 'plan' ? 'text-neutral-900 font-bold' : 'text-neutral-500'}`}
         >
           Medications
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => setActiveSegment('sync')}
-        className={`flex-1 py-2 rounded-full items-center justify-center ${activeSegment === 'sync' ? 'bg-[#2a14b4]' : ''}`}
+        className={`flex-1 py-2 rounded-lg items-center justify-center ${activeSegment === 'sync' ? 'bg-white shadow-xs' : ''}`}
       >
         <Text
-          className={`text-[10px] font-black uppercase ${activeSegment === 'sync' ? 'text-white' : 'text-[#464554]'}`}
+          className={`text-xs font-semibold ${activeSegment === 'sync' ? 'text-neutral-900 font-bold' : 'text-neutral-500'}`}
         >
-          Telemetry Sync
+          Sync
         </Text>
       </TouchableOpacity>
     </View>
@@ -154,8 +154,8 @@ export const CareView: React.FC<CareViewProps> = ({
   // Sync segment early return
   if (activeSegment === 'sync') {
     return (
-      <View className="flex-1 bg-[#fbfaf7]">
-        <View className="bg-[#fbfaf7] border-b border-[#e2dfd9] pt-4 pb-2 px-5">
+      <View className="flex-1 bg-[#f2f2f7]">
+        <View className="bg-white border-b border-neutral-100 pt-4 pb-2 px-5">
           {renderSwitcher()}
         </View>
         <SyncDashboard syncLogs={syncLogs} onTriggerSync={onTriggerSync} isSyncing={isSyncing} />
@@ -166,80 +166,76 @@ export const CareView: React.FC<CareViewProps> = ({
   // Care segment early return
   if (activeSegment === 'care') {
     return (
-      <View className="flex-1 bg-[#fbfaf7]">
+      <View className="flex-1 bg-[#f2f2f7]">
         {/* Header */}
-        <View className="bg-[#fbfaf7] border-b border-[#e2dfd9] pt-4 pb-3 px-6 space-y-3">
+        <View className="bg-white border-b border-neutral-100 pt-5 pb-3 px-6 space-y-3 shadow-xs">
           <View className="flex-row items-center justify-between">
-            <Text className="text-2xl font-black text-[#121c2a]">Care Dashboard</Text>
+            <Text className="text-2xl font-bold text-neutral-900 tracking-tight">
+              Care Dashboard
+            </Text>
             <TouchableOpacity
               onPress={onOpenQuickActions}
-              className="w-9 h-9 rounded-full bg-[#f4effc] items-center justify-center shadow-xs"
+              className="w-9 h-9 rounded-full bg-blue-50 items-center justify-center active:scale-95 shadow-xs"
             >
-              <Plus size={16} color="#2a14b4" />
+              <Plus size={16} color="#007aff" />
             </TouchableOpacity>
           </View>
           {renderSwitcher()}
         </View>
 
-        <ScrollView className="flex-1 p-6 space-y-6">
+        <ScrollView className="flex-1 p-5 space-y-5">
           {['Needs attention', 'Today', 'Upcoming', 'Waiting for someone', 'Completed'].map(
             (sec) => {
               const secTasks = tasks.filter((t) => t.section === sec);
               if (secTasks.length === 0) return null;
               return (
-                <View key={sec} className="space-y-3">
-                  <Text className="text-xs font-black uppercase text-slate-400 tracking-wider">
+                <View key={sec} className="space-y-2.5">
+                  <Text className="text-xs font-bold uppercase text-neutral-400 tracking-wider pl-1">
                     {sec}
                   </Text>
                   <View className="space-y-3">
                     {secTasks.map((task) => (
                       <View
                         key={task.id}
-                        className="bg-white border border-[#e2dfd9] rounded-3xl p-5 shadow-sm space-y-4"
+                        className="bg-white rounded-2xl p-5 shadow-sm shadow-neutral-100 space-y-4"
                       >
                         <View className="flex-row justify-between items-start">
                           <View className="space-y-1 pr-2 flex-1">
-                            <Text className="text-sm font-black text-slate-800 leading-snug">
+                            <Text className="text-sm font-bold text-neutral-800 leading-snug">
                               {task.title}
                             </Text>
-                            <Text className="text-[10px] font-bold text-slate-400">
+                            <Text className="text-[10px] font-semibold text-neutral-400">
                               Assigned to {task.assignee}
                             </Text>
                           </View>
-                          <View className="bg-slate-100 px-2.5 py-0.5 rounded-full shrink-0">
-                            <Text className="text-[9px] font-black text-slate-500 uppercase">
+                          <View className="bg-neutral-50 px-2.5 py-0.5 rounded-full shrink-0 border border-neutral-100/50">
+                            <Text className="text-[9px] font-semibold text-neutral-500">
                               {task.time}
                             </Text>
                           </View>
                         </View>
 
                         {/* Actions */}
-                        <View className="flex-row gap-2.5 pt-3 border-t border-slate-50">
+                        <View className="flex-row gap-2.5 pt-3 border-t border-neutral-100">
                           {task.status !== 'completed' && (
                             <TouchableOpacity
                               onPress={() => handleCompleteTask(task.id)}
-                              className="flex-1 bg-[#059669] py-3 rounded-xl items-center justify-center active:scale-95 shadow-xs"
+                              className="flex-1 bg-[#34c759] py-2 rounded-xl items-center justify-center active:opacity-90"
                             >
-                              <Text className="text-[9px] font-black text-white uppercase">
-                                Complete
-                              </Text>
+                              <Text className="text-[10px] font-bold text-white">Complete</Text>
                             </TouchableOpacity>
                           )}
                           <TouchableOpacity
                             onPress={() => handleReassignTask(task.id)}
-                            className="flex-1 bg-white border border-slate-200 py-3 rounded-xl items-center justify-center active:scale-95 shadow-xs"
+                            className="flex-1 bg-neutral-100 py-2 rounded-xl items-center justify-center active:opacity-90"
                           >
-                            <Text className="text-[9px] font-black text-slate-600 uppercase">
-                              Reassign
-                            </Text>
+                            <Text className="text-[10px] font-bold text-neutral-700">Reassign</Text>
                           </TouchableOpacity>
                           <TouchableOpacity
                             onPress={() => handleMessageTask(task.assignee)}
-                            className="flex-1 bg-white border border-[#dee9fc] py-3 rounded-xl items-center justify-center active:scale-95 shadow-xs"
+                            className="flex-1 bg-blue-50 py-2 rounded-xl items-center justify-center active:opacity-90"
                           >
-                            <Text className="text-[9px] font-black text-[#2a14b4] uppercase">
-                              Message
-                            </Text>
+                            <Text className="text-[10px] font-bold text-[#007aff]">Message</Text>
                           </TouchableOpacity>
                         </View>
                       </View>
@@ -257,59 +253,59 @@ export const CareView: React.FC<CareViewProps> = ({
 
   // Medications plan segment
   return (
-    <ScrollView className="flex-1 bg-[#fbfaf7]">
+    <ScrollView className="flex-1 bg-[#f2f2f7]">
       {/* Header */}
-      <View className="bg-[#fbfaf7] border-b border-[#e2dfd9] pt-4 pb-3 px-6 space-y-3">
+      <View className="bg-white border-b border-neutral-100 pt-5 pb-3 px-6 space-y-3 shadow-xs">
         <View className="flex-row items-center justify-between">
-          <Text className="text-2xl font-black text-[#121c2a]">Medications</Text>
+          <Text className="text-2xl font-bold text-neutral-900 tracking-tight">Medications</Text>
           <TouchableOpacity
             onPress={onOpenQuickActions}
-            className="w-9 h-9 rounded-full bg-[#f4effc] items-center justify-center shadow-xs"
+            className="w-9 h-9 rounded-full bg-blue-50 items-center justify-center active:scale-95 shadow-xs"
           >
-            <Plus size={16} color="#2a14b4" />
+            <Plus size={16} color="#007aff" />
           </TouchableOpacity>
         </View>
         {renderSwitcher()}
       </View>
 
-      <View className="p-6 space-y-6">
+      <View className="p-5 space-y-5">
         {/* Dad Section */}
-        <View className="space-y-3.5">
-          <View className="flex-row items-center justify-between">
+        <View className="space-y-2.5">
+          <View className="flex-row items-center justify-between px-1">
             <View className="flex-row items-center gap-2">
               <Image
                 source={{ uri: people.find((p) => p.id === 'dad')?.avatarUrl }}
-                className="w-6.5 h-6.5 rounded-full border border-slate-100"
+                className="w-6.5 h-6.5 rounded-full"
               />
-              <Text className="text-sm font-black text-slate-800">Dad's Medications</Text>
+              <Text className="text-sm font-bold text-neutral-800">Dad's Medications</Text>
             </View>
-            <View className="bg-[#eff4ff] px-2.5 py-0.5 rounded-full">
-              <Text className="text-[9px] font-black text-[#2a14b4] uppercase">Adherence 92%</Text>
+            <View className="bg-blue-50 px-2.5 py-0.5 rounded-full">
+              <Text className="text-[9px] font-bold text-[#007aff]">Adherence 92%</Text>
             </View>
           </View>
 
-          <View className="bg-white border border-[#e2dfd9] rounded-3xl p-5 shadow-sm space-y-4">
+          <View className="bg-white rounded-2xl p-5 shadow-sm shadow-neutral-100 space-y-4">
             {dadMeds.map((med, idx) => (
               <View
                 key={idx}
-                className="flex-row items-center justify-between border-b border-slate-50 last:border-0 last:pb-0 pb-3"
+                className="flex-row items-center justify-between border-b border-neutral-100 pb-3 last:border-0 last:pb-0"
               >
                 <View className="flex-row items-center gap-3">
-                  <View className="w-8 h-8 rounded-full bg-[#f4effc] items-center justify-center">
-                    <Pill size={14} color="#2a14b4" />
+                  <View className="w-8 h-8 rounded-full bg-blue-50 items-center justify-center">
+                    <Pill size={14} color="#007aff" />
                   </View>
                   <View>
-                    <Text className="text-xs font-black text-slate-800">{med.name}</Text>
-                    <Text className="text-[9px] text-slate-400 font-semibold">
+                    <Text className="text-xs font-bold text-neutral-800">{med.name}</Text>
+                    <Text className="text-[9px] text-neutral-400 font-semibold mt-0.5">
                       {med.dose} · {med.time}
                     </Text>
                   </View>
                 </View>
                 <View
-                  className={`px-2 py-0.5 rounded-full ${med.status.includes('Taken') ? 'bg-[#d2f4ef]' : 'bg-slate-100'}`}
+                  className={`px-2.5 py-0.5 rounded-full ${med.status.includes('Taken') ? 'bg-emerald-50' : 'bg-neutral-100'}`}
                 >
                   <Text
-                    className={`text-[8px] font-black uppercase ${med.status.includes('Taken') ? 'text-[#006a61]' : 'text-slate-500'}`}
+                    className={`text-[8px] font-bold ${med.status.includes('Taken') ? 'text-[#34c759]' : 'text-neutral-500'}`}
                   >
                     {med.status.includes('Taken') ? '✓ Taken' : med.status}
                   </Text>
@@ -318,73 +314,73 @@ export const CareView: React.FC<CareViewProps> = ({
             ))}
 
             {/* Dad Actions */}
-            <View className="flex-row gap-2.5 pt-2 border-t border-slate-50">
+            <View className="flex-row gap-2.5 pt-3 border-t border-neutral-100">
               <TouchableOpacity
                 onPress={() =>
                   context.showToast('Medication adherence check SMS dispatched to Dad.')
                 }
-                className="flex-1 bg-white border border-[#dee9fc] py-3.5 rounded-xl flex-row items-center justify-center gap-1.5 active:scale-95 shadow-xs"
+                className="flex-1 bg-neutral-50 py-2.5 rounded-xl flex-row items-center justify-center gap-1 active:opacity-90"
               >
-                <Bell size={12} color="#2a14b4" />
-                <Text className="text-[10px] font-black text-[#2a14b4] uppercase">Remind</Text>
+                <Bell size={12} color="#007aff" />
+                <Text className="text-[10px] font-bold text-[#007aff]">Remind</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={() => router.push('/parent/dad')}
-                className="flex-1 bg-white border border-[#dee9fc] py-3.5 rounded-xl flex-row items-center justify-center gap-1.5 active:scale-95 shadow-xs"
+                className="flex-1 bg-neutral-50 py-2.5 rounded-xl flex-row items-center justify-center gap-1 active:opacity-90"
               >
-                <Eye size={12} color="#708090" />
-                <Text className="text-[10px] font-black text-slate-600 uppercase">View</Text>
+                <Eye size={12} color="#8e8e93" />
+                <Text className="text-[10px] font-bold text-neutral-600">View</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={onOpenQuickActions}
-                className="flex-1 bg-white border border-[#dee9fc] py-3.5 rounded-xl flex-row items-center justify-center gap-1.5 active:scale-95 shadow-xs"
+                className="flex-1 bg-neutral-50 py-2.5 rounded-xl flex-row items-center justify-center gap-1 active:opacity-90"
               >
-                <Edit size={12} color="#708090" />
-                <Text className="text-[10px] font-black text-slate-600 uppercase">Edit</Text>
+                <Edit size={12} color="#8e8e93" />
+                <Text className="text-[10px] font-bold text-neutral-600">Edit</Text>
               </TouchableOpacity>
             </View>
           </View>
         </View>
 
         {/* Mom Section */}
-        <View className="space-y-3.5">
-          <View className="flex-row items-center justify-between">
+        <View className="space-y-2.5">
+          <View className="flex-row items-center justify-between px-1">
             <View className="flex-row items-center gap-2">
               <Image
                 source={{ uri: people.find((p) => p.id === 'mom')?.avatarUrl }}
-                className="w-6.5 h-6.5 rounded-full border border-slate-100"
+                className="w-6.5 h-6.5 rounded-full"
               />
-              <Text className="text-sm font-black text-slate-800">Mom's Medications</Text>
+              <Text className="text-sm font-bold text-neutral-800">Mom's Medications</Text>
             </View>
-            <View className="bg-[#eff4ff] px-2.5 py-0.5 rounded-full">
-              <Text className="text-[9px] font-black text-[#2a14b4] uppercase">Adherence 98%</Text>
+            <View className="bg-blue-50 px-2.5 py-0.5 rounded-full">
+              <Text className="text-[9px] font-bold text-[#007aff]">Adherence 98%</Text>
             </View>
           </View>
 
-          <View className="bg-white border border-[#e2dfd9] rounded-3xl p-5 shadow-sm space-y-4">
+          <View className="bg-white rounded-2xl p-5 shadow-sm shadow-neutral-100 space-y-4">
             {momMeds.map((med, idx) => (
               <View
                 key={idx}
-                className="flex-row items-center justify-between border-b border-slate-50 last:border-0 last:pb-0 pb-3"
+                className="flex-row items-center justify-between border-b border-neutral-100 pb-3 last:border-0 last:pb-0"
               >
                 <View className="flex-row items-center gap-3">
-                  <View className="w-8 h-8 rounded-full bg-[#f4effc] items-center justify-center">
-                    <Pill size={14} color="#2a14b4" />
+                  <View className="w-8 h-8 rounded-full bg-blue-50 items-center justify-center">
+                    <Pill size={14} color="#007aff" />
                   </View>
                   <View>
-                    <Text className="text-xs font-black text-slate-800">{med.name}</Text>
-                    <Text className="text-[9px] text-slate-400 font-semibold">
+                    <Text className="text-xs font-bold text-neutral-800">{med.name}</Text>
+                    <Text className="text-[9px] text-neutral-400 font-semibold mt-0.5">
                       {med.dose} · {med.time}
                     </Text>
                   </View>
                 </View>
                 <View
-                  className={`px-2 py-0.5 rounded-full ${med.status.includes('Taken') ? 'bg-[#d2f4ef]' : 'bg-slate-100'}`}
+                  className={`px-2.5 py-0.5 rounded-full ${med.status.includes('Taken') ? 'bg-emerald-50' : 'bg-neutral-100'}`}
                 >
                   <Text
-                    className={`text-[8px] font-black uppercase ${med.status.includes('Taken') ? 'text-[#006a61]' : 'text-slate-500'}`}
+                    className={`text-[8px] font-bold ${med.status.includes('Taken') ? 'text-[#34c759]' : 'text-neutral-500'}`}
                   >
                     {med.status.includes('Taken') ? '✓ Taken' : med.status}
                   </Text>
@@ -393,95 +389,91 @@ export const CareView: React.FC<CareViewProps> = ({
             ))}
 
             {/* Mom Actions */}
-            <View className="flex-row gap-2.5 pt-2 border-t border-slate-50">
+            <View className="flex-row gap-2.5 pt-3 border-t border-neutral-100">
               <TouchableOpacity
                 onPress={() =>
                   context.showToast('Medication adherence check SMS dispatched to Mom.')
                 }
-                className="flex-1 bg-white border border-[#dee9fc] py-3.5 rounded-xl flex-row items-center justify-center gap-1.5 active:scale-95 shadow-xs"
+                className="flex-1 bg-neutral-50 py-2.5 rounded-xl flex-row items-center justify-center gap-1 active:opacity-90"
               >
-                <Bell size={12} color="#2a14b4" />
-                <Text className="text-[10px] font-black text-[#2a14b4] uppercase">Remind</Text>
+                <Bell size={12} color="#007aff" />
+                <Text className="text-[10px] font-bold text-[#007aff]">Remind</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={() => router.push('/parent/mom')}
-                className="flex-1 bg-white border border-[#dee9fc] py-3.5 rounded-xl flex-row items-center justify-center gap-1.5 active:scale-95 shadow-xs"
+                className="flex-1 bg-neutral-50 py-2.5 rounded-xl flex-row items-center justify-center gap-1 active:opacity-90"
               >
-                <Eye size={12} color="#708090" />
-                <Text className="text-[10px] font-black text-slate-600 uppercase">View</Text>
+                <Eye size={12} color="#8e8e93" />
+                <Text className="text-[10px] font-bold text-neutral-600">View</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={onOpenQuickActions}
-                className="flex-1 bg-white border border-[#dee9fc] py-3.5 rounded-xl flex-row items-center justify-center gap-1.5 active:scale-95 shadow-xs"
+                className="flex-1 bg-neutral-50 py-2.5 rounded-xl flex-row items-center justify-center gap-1 active:opacity-90"
               >
-                <Edit size={12} color="#708090" />
-                <Text className="text-[10px] font-black text-slate-600 uppercase">Edit</Text>
+                <Edit size={12} color="#8e8e93" />
+                <Text className="text-[10px] font-bold text-neutral-600">Edit</Text>
               </TouchableOpacity>
             </View>
           </View>
         </View>
 
         {/* Appointments Section */}
-        <View className="space-y-3.5">
-          <View className="flex-row items-center gap-2">
-            <Calendar size={16} color="#ba1a1a" />
-            <Text className="text-xs font-black text-slate-800 uppercase tracking-widest">
+        <View className="space-y-2.5">
+          <View className="flex-row items-center gap-2 px-1">
+            <Calendar size={16} color="#ff3b30" />
+            <Text className="text-xs font-bold text-neutral-400 uppercase tracking-widest">
               Upcoming Appointments
             </Text>
           </View>
 
           {/* Dad's Appt */}
-          <View className="bg-white border border-[#e2dfd9] rounded-3xl p-5 shadow-sm space-y-3.5">
+          <View className="bg-white rounded-2xl p-5 shadow-sm shadow-neutral-100 space-y-3.5">
             <View className="flex-row justify-between items-start">
               <View className="space-y-0.5">
-                <Text className="text-xs font-black text-slate-400 uppercase tracking-wider">
+                <Text className="text-xs font-bold text-neutral-400 uppercase tracking-wider">
                   Dad
                 </Text>
-                <Text className="text-sm font-black text-slate-850">Cardiology</Text>
+                <Text className="text-sm font-bold text-neutral-800">Cardiology</Text>
               </View>
-              <View className="bg-rose-50 border border-rose-100 px-2.5 py-0.5 rounded-full">
-                <Text className="text-[9px] font-black text-[#ba1a1a] uppercase">
-                  Tomorrow · 4:00 PM IST
-                </Text>
+              <View className="bg-red-50 border border-red-100/50 px-2.5 py-0.5 rounded-full">
+                <Text className="text-[9px] font-bold text-[#ff3b30]">Tomorrow · 4:00 PM IST</Text>
               </View>
             </View>
-            <Text className="text-xs text-slate-500 font-bold">
+            <Text className="text-xs text-neutral-500 font-semibold">
               Apollo Hospital Chennai · Dr. Sharma
             </Text>
 
             {/* Actions */}
-            <View className="flex-row gap-2.5 pt-2 border-t border-slate-50">
+            <View className="flex-row gap-2.5 pt-3 border-t border-neutral-100">
               <TouchableOpacity
                 onPress={() => router.push('/parent/dad/prepare')}
-                className="flex-1 bg-white border border-[#dee9fc] py-3 rounded-xl items-center justify-center active:scale-95 shadow-xs"
+                className="flex-1 bg-blue-50 py-2 rounded-xl items-center justify-center active:opacity-90 shadow-xs"
               >
-                <Text className="text-[9px] font-black text-[#2a14b4] uppercase">Prepare</Text>
+                <Text className="text-[10px] font-bold text-[#007aff]">Prepare</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => context.showToast('Cardiology appointment details shared.')}
-                className="flex-1 bg-white border border-[#dee9fc] py-3 rounded-xl items-center justify-center active:scale-95 shadow-xs"
+                className="flex-1 bg-neutral-100 py-2 rounded-xl items-center justify-center active:opacity-90 shadow-xs"
               >
-                <Text className="text-[9px] font-black text-slate-600 uppercase">Share</Text>
+                <Text className="text-[10px] font-bold text-neutral-600">Share</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => context.showToast('Caregiver Priya assigned to accompany Dad.')}
-                className="flex-1 bg-white border border-[#dee9fc] py-3 rounded-xl items-center justify-center active:scale-95 shadow-xs"
+                className="flex-1 bg-neutral-100 py-2 rounded-xl items-center justify-center active:opacity-90 shadow-xs"
               >
-                <Text className="text-[9px] font-black text-slate-600 uppercase font-black">
-                  Assign caregiver
-                </Text>
+                <Text className="text-[10px] font-bold text-neutral-600">Assign Caregiver</Text>
               </TouchableOpacity>
             </View>
           </View>
         </View>
 
         {/* Care Providers Circle Section */}
-        <View className="space-y-3.5 mb-12">
-          <View className="flex-row items-center gap-2">
-            <Users size={16} color="#708090" />
-            <Text className="text-xs font-black text-slate-800 uppercase tracking-widest">
+        <View className="space-y-2.5 mb-12">
+          <View className="flex-row items-center gap-2 px-1">
+            <Users size={16} color="#8e8e93" />
+            <Text className="text-xs font-bold text-neutral-400 uppercase tracking-widest">
               Active Care circle
             </Text>
           </View>
@@ -494,20 +486,17 @@ export const CareView: React.FC<CareViewProps> = ({
               <TouchableOpacity
                 key={member.id}
                 onPress={() => router.push(`/caregiver/${member.id}`)}
-                className="bg-white rounded-3xl p-4 border border-[#e2dfd9] items-center space-y-1.5 w-24 shrink-0 shadow-sm active:scale-95"
+                className="bg-white rounded-2xl p-4 border border-neutral-100 items-center space-y-1.5 w-24 shrink-0 shadow-sm active:scale-95"
               >
-                <Image
-                  source={{ uri: member.avatarUrl }}
-                  className="w-10 h-10 rounded-full border border-slate-100"
-                />
+                <Image source={{ uri: member.avatarUrl }} className="w-10 h-10 rounded-full" />
                 <View className="items-center">
                   <Text
-                    className="text-[10px] font-black text-slate-800 text-center"
+                    className="text-[10px] font-bold text-neutral-800 text-center"
                     numberOfLines={1}
                   >
                     {member.name}
                   </Text>
-                  <Text className="text-[8px] text-slate-400 font-bold text-center">
+                  <Text className="text-[8px] text-neutral-400 font-semibold text-center mt-0.5">
                     {member.relationship}
                   </Text>
                 </View>
@@ -515,6 +504,7 @@ export const CareView: React.FC<CareViewProps> = ({
             ))}
           </ScrollView>
         </View>
+        <View className="h-28" />
       </View>
     </ScrollView>
   );

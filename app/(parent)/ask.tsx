@@ -53,7 +53,7 @@ export default function ParentVoiceRoute() {
     setTimeout(() => {
       setLoading(false);
       setAiReply(rep);
-      context.showToast('KinGuard co-pilot answered query.');
+      context.showToast('KinGuard answered query.');
     }, 800);
   };
 
@@ -61,7 +61,7 @@ export default function ParentVoiceRoute() {
     setRecording(true);
     setTranscript(null);
     setAiReply(null);
-    context.showToast('Listening to Ramesh sir...');
+    context.showToast('Listening to Ramesh...');
 
     setTimeout(() => {
       setRecording(false);
@@ -80,51 +80,52 @@ export default function ParentVoiceRoute() {
 
   return (
     <DeviceFrame>
-      <View className="flex-1 relative bg-[#fffbeb]">
+      <View className="flex-1 relative bg-[#f2f2f7]">
         {/* Header */}
-        <View className="bg-[#d97706] pt-6 pb-5 px-6 border-b-4 border-[#b45309] space-y-1">
-          <Text className="text-2xl font-black text-white uppercase tracking-wider">
-            Ask KinGuard
-          </Text>
-          <Text className="text-xs font-bold text-[#fef3c7] uppercase tracking-widest">
-            “Ask anything about Mom & Dad.”
-          </Text>
+        <View className="bg-white pt-6 pb-5 px-6 border-b border-neutral-100 flex-row items-center justify-between">
+          <View>
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">Ask KinGuard</Text>
+            <Text className="text-xs text-neutral-400 font-semibold mt-0.5">
+              Press to speak or select a quick question below
+            </Text>
+          </View>
+          <Sparkles size={20} color="#af52de" fill="#af52de" />
         </View>
 
-        <ScrollView className="flex-1 p-6 space-y-6">
+        <ScrollView className="flex-1 px-5 pt-4 space-y-5">
           {/* Status Display Area */}
-          <View className="bg-white border-4 border-amber-300 rounded-[32px] p-6 shadow-xs min-h-[140px] justify-center">
+          <View className="bg-white border border-neutral-100 rounded-2xl p-6 shadow-sm min-h-[140px] justify-center">
             {recording ? (
               <View className="items-center space-y-2 py-4">
-                <Text className="text-xl font-black text-[#d97706] animate-pulse uppercase tracking-wider">
+                <Text className="text-lg font-bold text-[#ff3b30] animate-pulse">
                   Listening to Dad...
                 </Text>
-                <Text className="text-xs text-slate-400 font-semibold">Speak clearly now sir</Text>
+                <Text className="text-xs text-neutral-400 font-semibold">Speak clearly now</Text>
               </View>
             ) : loading ? (
               <View className="items-center space-y-3 py-4">
-                <ActivityIndicator size="small" color="#d97706" />
-                <Text className="text-xs font-black text-slate-500 uppercase">
+                <ActivityIndicator size="small" color="#007aff" />
+                <Text className="text-xs font-bold text-neutral-400 uppercase tracking-wider">
                   KinGuard is thinking...
                 </Text>
               </View>
             ) : transcript ? (
               <View className="space-y-4">
                 <View className="space-y-1">
-                  <Text className="text-[10px] font-black text-slate-400 uppercase tracking-wider">
+                  <Text className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
                     You asked
                   </Text>
-                  <Text className="text-sm font-black text-slate-850">"{transcript}"</Text>
+                  <Text className="text-sm font-bold text-neutral-850">"{transcript}"</Text>
                 </View>
                 {aiReply && (
-                  <View className="pt-3 border-t border-slate-100 space-y-1">
+                  <View className="pt-3 border-t border-neutral-100 space-y-1">
                     <View className="flex-row items-center gap-1.5">
-                      <Sparkles size={12} color="#2a14b4" fill="#2a14b4" />
-                      <Text className="text-[10px] font-black text-[#2a14b4] uppercase tracking-wider">
+                      <Sparkles size={12} color="#af52de" fill="#af52de" />
+                      <Text className="text-[10px] font-bold text-[#af52de] uppercase tracking-wider">
                         KinGuard AI
                       </Text>
                     </View>
-                    <Text className="text-xs font-bold text-slate-700 leading-relaxed">
+                    <Text className="text-xs font-semibold text-neutral-700 leading-relaxed">
                       {aiReply}
                     </Text>
                   </View>
@@ -132,10 +133,10 @@ export default function ParentVoiceRoute() {
               </View>
             ) : (
               <View className="items-center py-4 space-y-2">
-                <Text className="text-base font-black text-[#5c3e03] text-center leading-relaxed">
+                <Text className="text-base font-bold text-neutral-800 text-center leading-relaxed">
                   How can I help you today, Dad?
                 </Text>
-                <Text className="text-[11px] font-semibold text-slate-400 text-center leading-snug">
+                <Text className="text-xs font-semibold text-neutral-400 text-center leading-snug">
                   Choose a question below or hold the big microphone to ask anything.
                 </Text>
               </View>
@@ -143,19 +144,19 @@ export default function ParentVoiceRoute() {
           </View>
 
           {/* Prompts list grid */}
-          <View className="space-y-3">
-            <Text className="text-xs font-black text-slate-500 uppercase tracking-widest">
+          <View className="space-y-2">
+            <Text className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest pl-1">
               Tap a question:
             </Text>
-            <View className="space-y-2.5">
+            <View className="space-y-2">
               {promptExamples.map((item, idx) => (
                 <TouchableOpacity
                   key={idx}
                   onPress={() => handleSelectPrompt(item.text, item.reply)}
-                  className="w-full bg-white border-2 border-amber-200 p-4 rounded-2xl flex-row items-center gap-3 active:scale-98 shadow-xs"
+                  className="w-full bg-white border border-neutral-100 p-4 rounded-xl flex-row items-center gap-3 active:scale-98 shadow-sm"
                 >
-                  <HelpCircle size={16} color="#d97706" />
-                  <Text className="text-xs font-black text-slate-700 leading-snug flex-1">
+                  <HelpCircle size={16} color="#007aff" />
+                  <Text className="text-xs font-bold text-neutral-700 leading-snug flex-1">
                     {item.text}
                   </Text>
                 </TouchableOpacity>
@@ -164,22 +165,22 @@ export default function ParentVoiceRoute() {
           </View>
 
           {/* Large Microphone Container */}
-          <View className="items-center py-6">
+          <View className="items-center py-4">
             <TouchableOpacity
               onPress={startRecord}
               disabled={recording || loading}
               activeOpacity={0.8}
-              className={`w-28 h-28 rounded-full items-center justify-center border-4 border-white shadow-xl ${
+              className={`w-24 h-24 rounded-full items-center justify-center border-4 border-white shadow-xl ${
                 recording ? 'bg-red-500' : 'bg-blue-500'
               } active:scale-95`}
             >
               {recording ? (
-                <Volume2 size={40} color="#ffffff" />
+                <Volume2 size={36} color="#ffffff" />
               ) : (
-                <Mic size={40} color="#ffffff" />
+                <Mic size={36} color="#ffffff" />
               )}
             </TouchableOpacity>
-            <Text className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-3.5">
+            <Text className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mt-3">
               {recording ? 'TAP TO COMPLETE' : 'TAP MICROPHONE TO SPEAK'}
             </Text>
           </View>
