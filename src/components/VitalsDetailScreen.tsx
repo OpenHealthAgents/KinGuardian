@@ -7,10 +7,15 @@ import {
   Calendar,
   Pill,
   Sparkles,
-  Upload
+  Upload,
+  Watch,
+  ChevronRight
 } from 'lucide-react-native';
+
 import Svg, { Path, Circle, Line, Defs, LinearGradient, Stop } from 'react-native-svg';
+import { useRouter } from 'expo-router';
 import { AppContext } from '../store/AppContext';
+
 
 interface VitalsDetailScreenProps {
   personId: 'dad' | 'mom';
@@ -28,7 +33,9 @@ export const VitalsDetailScreen: React.FC<VitalsDetailScreenProps> = ({
   readingsHistory
 }) => {
   const context = useContext(AppContext);
+  const router = useRouter();
   const [systolicInput, setSystolicInput] = useState('');
+
   const [diastolicInput, setDiastolicInput] = useState('');
   const [glucoseInput, setGlucoseInput] = useState('');
   const [noteInput, setNoteInput] = useState('');
@@ -146,8 +153,50 @@ export const VitalsDetailScreen: React.FC<VitalsDetailScreenProps> = ({
           </Text>
         </View>
 
+        {/* Health Sources: Connected Wearables Section */}
+        <View className="space-y-2">
+          <Text className="text-sm font-black text-[#121c2a] uppercase tracking-wider">
+            Health Sources
+          </Text>
+          <TouchableOpacity
+            onPress={() => router.push(`/(coordinator)/parent/${personId}/wearables` as any)}
+            className="bg-white border border-[#e2dfd9] rounded-3xl p-4.5 shadow-sm space-y-3"
+          >
+            <View className="flex-row items-center justify-between">
+              <View className="flex-row items-center gap-2.5">
+                <View className="w-10 h-10 rounded-2xl bg-indigo-50 border border-indigo-100 items-center justify-center">
+                  <Watch size={20} color="#2a14b4" />
+                </View>
+                <View>
+                  <Text className="text-sm font-black text-slate-900">Connected Wearables</Text>
+                  <Text className="text-[11px] text-slate-500 font-medium">
+                    Apple Watch & Garmin active
+                  </Text>
+                </View>
+              </View>
+              <View className="flex-row items-center gap-1">
+                <Text className="text-xs font-bold text-[#2a14b4]">Manage</Text>
+                <ChevronRight size={14} color="#2a14b4" />
+              </View>
+            </View>
+
+            {/* Micro status chips */}
+            <View className="flex-row items-center gap-2 pt-1 border-t border-slate-100">
+              <View className="flex-row items-center gap-1 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">
+                <CheckCircle2 size={10} color="#059669" />
+                <Text className="text-[9px] font-bold text-emerald-700">Apple Watch (8m ago)</Text>
+              </View>
+              <View className="flex-row items-center gap-1 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">
+                <CheckCircle2 size={10} color="#059669" />
+                <Text className="text-[9px] font-bold text-emerald-700">Garmin (Today)</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        </View>
+
         {/* SECTION 1: Health Today */}
         <View className="space-y-3">
+
           <Text className="text-sm font-black text-[#121c2a] uppercase tracking-wider">
             Health today
           </Text>

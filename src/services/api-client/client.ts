@@ -8,7 +8,7 @@
 import {
   UUID,
   ErrorResponse,
-  FamilyResponse,
+  FamilyMembership,
   CareSubjectResponse,
   MedicationConfirmRequest,
   MedicationAdherenceResponse,
@@ -20,6 +20,7 @@ import {
   ConsentResponse,
   HealthCheckResponse
 } from './types';
+
 
 export class DrGodlyApiError extends Error {
   public readonly code: string;
