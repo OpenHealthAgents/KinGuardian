@@ -633,29 +633,57 @@ export const WearablesManagementScreen: React.FC<WearablesManagementScreenProps>
               </TouchableOpacity>
             </View>
 
-            <View className="items-center py-4 space-y-3">
+            <View className="items-center py-2 space-y-2">
               <View className="w-16 h-16 rounded-3xl bg-indigo-50 items-center justify-center border border-indigo-100">
                 <Watch size={32} color="#2a14b4" />
               </View>
               <Text className="text-sm font-black text-slate-900 text-center">
-                Secure Open Wearables Authorization
+                Wearable Health Data Consent
               </Text>
               <Text className="text-xs text-slate-500 text-center font-medium px-4 leading-relaxed">
-                You will be redirected to {connectModalDevice?.name}'s secure hosted authentication page. KinGuard never receives or handles your vendor passwords.
+                Wearable data is protected health information. Please confirm the data scopes to share with KinGuard.
               </Text>
             </View>
 
-            <View className="bg-slate-50 rounded-2xl p-4 border border-slate-100 space-y-2">
-              <View className="flex-row items-center gap-2">
-                <ShieldCheck size={14} color="#059669" />
-                <Text className="text-xs font-bold text-slate-800">
+            {/* MANDATORY PRE-CONNECTION DISCLOSURES */}
+            <View className="bg-indigo-50/60 rounded-2xl p-4 border border-indigo-100 space-y-2.5">
+              <Text className="text-xs font-black text-[#2a14b4] uppercase tracking-wider">
+                What KinGuard can receive
+              </Text>
+              <View className="space-y-1.5 pl-1">
+                <View className="flex-row items-center gap-2">
+                  <CheckCircle2 size={14} color="#059669" />
+                  <Text className="text-xs font-bold text-slate-800">Activity (Steps, movement, active minutes)</Text>
+                </View>
+                <View className="flex-row items-center gap-2">
+                  <CheckCircle2 size={14} color="#059669" />
+                  <Text className="text-xs font-bold text-slate-800">Sleep (Duration, stages, sleep quality)</Text>
+                </View>
+                <View className="flex-row items-center gap-2">
+                  <CheckCircle2 size={14} color="#059669" />
+                  <Text className="text-xs font-bold text-slate-800">Heart rate (Resting pulse, continuous HR, HRV)</Text>
+                </View>
+              </View>
+              <View className="pt-2 border-t border-indigo-100 flex-row items-center gap-1.5">
+                <ShieldCheck size={14} color="#2a14b4" />
+                <Text className="text-[11px] font-bold text-slate-600">
+                  You can disconnect this device at any time.
+                </Text>
+              </View>
+            </View>
+
+            <View className="bg-slate-50 rounded-2xl p-3.5 border border-slate-100 space-y-1">
+              <View className="flex-row items-center gap-1.5">
+                <Lock size={12} color="#64748b" />
+                <Text className="text-[11px] font-bold text-slate-700">
                   Zero Credential Guarantee
                 </Text>
               </View>
-              <Text className="text-[11px] text-slate-500 font-medium leading-relaxed">
-                Open Wearables manages OAuth tokens securely with AES-256 encryption. Only normalized telemetry is delivered back to KinGuard.
+              <Text className="text-[10px] text-slate-500 font-medium leading-relaxed">
+                KinGuard never receives or stores your device passwords or vendor login credentials.
               </Text>
             </View>
+
 
             <TouchableOpacity
               onPress={() => connectModalDevice && handleConfirmOAuthConnect(connectModalDevice)}
