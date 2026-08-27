@@ -52,6 +52,23 @@ export interface SyncTelemetryResult {
  * React Native screens MUST code against this interface rather than
  * coupling directly to vendor or Open Wearables SDK APIs.
  */
+export const WEARABLE_ERROR_CODE = {
+  WEARABLE_SERVICE_UNAVAILABLE: 'WEARABLE_SERVICE_UNAVAILABLE'
+} as const;
+
+export type WearableErrorCode = typeof WEARABLE_ERROR_CODE[keyof typeof WEARABLE_ERROR_CODE];
+
+export const WEARABLE_ERROR_MESSAGES: Record<string, string> = {
+  WEARABLE_SERVICE_UNAVAILABLE: "We couldn't update your health data right now. Your connection is still intact."
+};
+
+export function getWearableErrorMessage(errorCode?: string): string {
+  if (errorCode && WEARABLE_ERROR_MESSAGES[errorCode]) {
+    return WEARABLE_ERROR_MESSAGES[errorCode];
+  }
+  return "We couldn't update your health data right now. Your connection is still intact.";
+}
+
 export interface HealthDataConnection {
   readonly provider: HealthProviderType;
   connect(): Promise<void>;
