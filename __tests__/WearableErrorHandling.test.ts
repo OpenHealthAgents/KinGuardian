@@ -8,9 +8,9 @@
 
 import {
   WEARABLE_ERROR_CODE,
-  WEARABLE_ERROR_MESSAGES,
   getWearableErrorMessage
 } from '../src/services/health/types';
+
 
 describe('Wearable Error Handling on Mobile', () => {
   it('maps WEARABLE_SERVICE_UNAVAILABLE to reassuring user copy', () => {

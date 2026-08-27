@@ -1,13 +1,14 @@
 /**
  * Open Wearables React Native SDK Adapter.
  *
- * Implements KinGuard's HealthDataConnection abstraction to interact with
+ * Implements KinGuardian's HealthDataConnection abstraction to interact with
  * device-local health stores (Apple HealthKit & Google Health Connect)
  * via the Open Wearables React Native SDK.
  *
  * Architecture Flow:
  * React Native Screens -> HealthDataConnection -> OpenWearablesNativeAdapter -> Open Wearables RN SDK -> HealthKit / Health Connect
  */
+
 
 import { Platform } from 'react-native';
 import {

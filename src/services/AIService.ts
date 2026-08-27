@@ -1,33 +1,67 @@
+/**
+ * @file AIService.ts
+ * @description KinGuardian Mobile AI Service Interface and Mock Implementation.
+ * 
+ * ARCHITECTURAL PRINCIPLES:
+ * 1. Persona Alignment: Provides calibrated, empathetic answers suitable for long-distance coordinators
+ *    and local elderly parents without triggering unwarranted anxiety.
+ * 2. Source Provenance: Every response is paired with explicit citations to primary clinical records,
+ *    wearable streams, or environmental indices.
+ * 3. Offline Resilience: Mock service simulates production bezs-agent responses with deterministic delays.
+ */
+
 import { AIInsight } from '../types';
 
+/**
+ * Standard structured response payload returned by KinGuardian AI.
+ */
 export interface AIResponse {
+  /** Natural language response formulated by the AI reasoning agent */
   answer: string;
+  /** Primary record citations and device attributions providing evidence */
   citations: string[];
 }
 
+/**
+ * Structured doctor visit preparation package synthesized by AI.
+ */
 export interface AppointmentPreparation {
   appointmentId: string;
   preparations: string[];
   questionsToAsk: string[];
 }
 
+/**
+ * Key extraction summary for uploaded clinical lab reports or discharge summaries.
+ */
 export interface DocumentSummary {
   documentId: string;
   summaryText: string;
   extractedMetrics: { key: string; value: string }[];
 }
 
+/**
+ * Core AI Service Port defining all intelligent concierge interactions.
+ */
 export interface AIService {
+  /** Answers natural language queries regarding family health patterns */
   ask(question: string, personIds: string[]): Promise<AIResponse>;
+  /** Generates proactive Guardian Moment insights based on cross-border data */
   generateInsight(personId: string): Promise<AIInsight>;
+  /** Formulates doctor questions and preparation checklists */
   prepareAppointment(appointmentId: string): Promise<AppointmentPreparation>;
+  /** Extracts structured lab metrics from scanned health records */
   summarizeDocument(documentId: string): Promise<DocumentSummary>;
 }
 
+/**
+ * Deterministic Mock AI Service implementation for development, testing, and offline execution.
+ */
 export class MockAIService implements AIService {
   private delay(): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, 800));
   }
+
 
   async ask(question: string, _personIds: string[]): Promise<AIResponse> {
     await this.delay();
