@@ -82,8 +82,9 @@ export const DeviceFrame: React.FC<DeviceFrameProps> = ({ children }) => {
               <View className="flex-row items-center justify-between">
                 <View>
                   <Text className="text-sm font-black text-slate-800 uppercase tracking-wide">
-                    KinGuard Demo Switcher
+                    KinGuardian Demo Switcher
                   </Text>
+
                   <Text className="text-[10px] text-slate-400 font-bold uppercase mt-0.5">
                     Click to hot-swap persona state
                   </Text>
@@ -200,8 +201,9 @@ export const DeviceFrame: React.FC<DeviceFrameProps> = ({ children }) => {
               <View className="flex-row items-center justify-between">
                 <View>
                   <Text className="text-sm font-black text-slate-800 uppercase tracking-wide">
-                    KinGuard Demo Switcher
+                    KinGuardian Demo Switcher
                   </Text>
+
                   <Text className="text-[10px] text-slate-400 font-bold uppercase mt-0.5">
                     Click to hot-swap persona state
                   </Text>

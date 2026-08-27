@@ -25,8 +25,9 @@ export const ChatView: React.FC<ChatViewProps> = ({ onAskAI, messages, onSendMes
         <View className="flex-1">
           <Text className="text-xs font-black text-[#2a14b4]">Family Care Channel</Text>
           <Text className="text-[9px] text-[#006a61] font-black uppercase mt-0.5">
-            Mom, Dad, Suresh &amp; KinGuard AI
+            Mom, Dad, Suresh &amp; KinGuardian AI
           </Text>
+
         </View>
 
         <TouchableOpacity

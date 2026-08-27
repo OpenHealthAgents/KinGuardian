@@ -598,12 +598,13 @@ export const AIInsightCard: React.FC<{
           onPress={onAction}
           className="w-full bg-[#eff4ff] border border-[#dee9fc] py-3.5 rounded-xl items-center justify-center mt-1"
           accessibilityRole="button"
-          accessibilityLabel="Ask KinGuard about this insight"
+          accessibilityLabel="Ask KinGuardian about this insight"
         >
           <Text className="text-[#2a14b4] font-black text-xs uppercase tracking-wider">
-            Ask KinGuard
+            Ask KinGuardian
           </Text>
         </TouchableOpacity>
+
       )}
     </View>
   );

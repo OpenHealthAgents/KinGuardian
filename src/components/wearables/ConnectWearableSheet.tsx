@@ -112,8 +112,9 @@ export const ConnectWearableSheet: React.FC<ConnectWearableSheetProps> = ({
                     </Text>
                   </View>
                   <Text className="text-[11px] text-blue-700 dark:text-blue-300 leading-relaxed">
-                    KinGuard never stores your device passwords or raw biometrics on unencrypted storage. You can disconnect or revoke permissions at any time.
+                    KinGuardian never stores your device passwords or raw biometrics on unencrypted storage. You can disconnect or revoke permissions at any time.
                   </Text>
+
                 </View>
               </View>
             )}

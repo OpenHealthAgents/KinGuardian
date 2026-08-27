@@ -161,7 +161,7 @@ export default function CoordinatorAskRoute() {
         {/* Header Title */}
         <View className="px-6 py-5 border-b border-neutral-100 bg-white flex-row items-center justify-between">
           <View>
-            <Text className="text-xl font-bold text-neutral-900 tracking-tight">Ask KinGuard</Text>
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">Ask KinGuardian</Text>
             <Text className="text-xs text-neutral-400 font-semibold mt-0.5">
               Ask anything about Mom & Dad
             </Text>
@@ -192,10 +192,11 @@ export default function CoordinatorAskRoute() {
                       <View className="flex-row items-center gap-1.5 mb-0.5">
                         <Sparkles size={12} color="#af52de" fill="#af52de" />
                         <Text className="text-[9px] font-bold uppercase tracking-wider text-[#af52de]">
-                          KinGuard AI
+                          KinGuardian AI
                         </Text>
                       </View>
                     )}
+
                     <Text
                       className={`text-xs leading-relaxed ${isUser ? 'text-white font-semibold' : 'text-neutral-700 font-semibold'}`}
                     >

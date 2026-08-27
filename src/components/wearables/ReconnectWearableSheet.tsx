@@ -26,7 +26,7 @@ export const ReconnectWearableSheet: React.FC<ReconnectWearableSheetProps> = ({
 }) => {
   const [isReconnecting, setIsReconnecting] = useState(false);
 
-  // Role-aware perspective headline directly matching KinGuard spec:
+  // Role-aware perspective headline directly matching KinGuardian spec:
   // Parent: "Your health device needs to reconnect."
   // Coordinator: "Dad's Garmin hasn't synced for 12 hours."
   const headline = isCoordinatorView
@@ -34,8 +34,9 @@ export const ReconnectWearableSheet: React.FC<ReconnectWearableSheetProps> = ({
     : 'Your health device needs to reconnect.';
 
   const subtext = isCoordinatorView
-    ? `KinGuard is waiting for new telemetry from ${careSubjectName}'s ${provider.replace('_', ' ')} device. This is an operational sync delay, not a health change.`
+    ? `KinGuardian is waiting for new telemetry from ${careSubjectName}'s ${provider.replace('_', ' ')} device. This is an operational sync delay, not a health change.`
     : `Bluetooth or permissions for your ${provider.replace('_', ' ')} device may have paused. Tap Reconnect to resume live health tracking.`;
+
 
 
   const handleReconnectAction = async () => {

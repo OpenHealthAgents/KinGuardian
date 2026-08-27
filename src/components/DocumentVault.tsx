@@ -280,12 +280,13 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
             <View className="items-center">
               <Text className="text-xs font-bold text-neutral-850 tracking-wide text-center">
                 {docName.includes('Apollo')
-                  ? 'KinGuard is reading the report…'
+                  ? 'KinGuardian is reading the report…'
                   : captureSource === 'voice'
                     ? 'Transcribing Voice memo...'
-                    : 'KinGuard AI OCR Scanning...'}
+                    : 'KinGuardian AI OCR Scanning...'}
               </Text>
               <Text className="text-[9px] font-bold text-neutral-400 mt-1">
+
                 Uploading files to London Vault ({scanProgress}%)
               </Text>
             </View>
@@ -526,7 +527,7 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
                         <View className="flex-row items-center gap-1.5 mb-1.5">
                           <Sparkles size={12} color="#af52de" />
                           <Text className="text-[10px] font-bold text-[#af52de] uppercase tracking-wider">
-                            KinGuard Summary
+                            KinGuardian Summary
                           </Text>
                         </View>
                         <Text className="text-xs leading-relaxed text-neutral-700">

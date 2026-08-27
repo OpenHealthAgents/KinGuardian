@@ -88,8 +88,9 @@ export const ParentCameraModal: React.FC<ParentCameraModalProps> = ({
         {/* Top bar */}
         <View className="flex-row justify-between items-center px-5 py-4 bg-black/60 z-40">
           <Text className="text-xs font-black tracking-widest uppercase text-white">
-            KinGuard DocScanner
+            KinGuardian DocScanner
           </Text>
+
           <TouchableOpacity
             onPress={() => {
               setPhotoTaken(false);

@@ -66,7 +66,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
                 <Heart size={28} color="#007aff" fill="#007aff" />
               </View>
               <Text className="text-2xl font-bold text-neutral-900 tracking-tight text-center">
-                KinGuard
+                KinGuardian
               </Text>
               <Text className="text-base font-semibold text-neutral-700 text-center leading-snug px-2">
                 “Be there for your parents, even when you're far away.”
@@ -147,9 +147,10 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
               </TouchableOpacity>
 
               <Text className="text-[10px] text-neutral-400 text-center font-semibold px-4 leading-normal mt-4">
-                KinGuard is currently optimized for cross-border care delivery between the West/Gulf
+                KinGuardian is currently optimized for cross-border care delivery between the West/Gulf
                 regions and parents residing in India.
               </Text>
+
             </View>
           )}
 

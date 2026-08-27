@@ -53,7 +53,7 @@ export default function ParentVoiceRoute() {
     setTimeout(() => {
       setLoading(false);
       setAiReply(rep);
-      context.showToast('KinGuard answered query.');
+      context.showToast('KinGuardian answered query.');
     }, 800);
   };
 
@@ -84,7 +84,7 @@ export default function ParentVoiceRoute() {
         {/* Header */}
         <View className="bg-white pt-6 pb-5 px-6 border-b border-neutral-100 flex-row items-center justify-between">
           <View>
-            <Text className="text-xl font-bold text-neutral-900 tracking-tight">Ask KinGuard</Text>
+            <Text className="text-xl font-bold text-neutral-900 tracking-tight">Ask KinGuardian</Text>
             <Text className="text-xs text-neutral-400 font-semibold mt-0.5">
               Press to speak or select a quick question below
             </Text>
@@ -106,7 +106,7 @@ export default function ParentVoiceRoute() {
               <View className="items-center space-y-3 py-4">
                 <ActivityIndicator size="small" color="#007aff" />
                 <Text className="text-xs font-bold text-neutral-400 uppercase tracking-wider">
-                  KinGuard is thinking...
+                  KinGuardian is thinking...
                 </Text>
               </View>
             ) : transcript ? (
@@ -122,7 +122,7 @@ export default function ParentVoiceRoute() {
                     <View className="flex-row items-center gap-1.5">
                       <Sparkles size={12} color="#af52de" fill="#af52de" />
                       <Text className="text-[10px] font-bold text-[#af52de] uppercase tracking-wider">
-                        KinGuard AI
+                        KinGuardian AI
                       </Text>
                     </View>
                     <Text className="text-xs font-semibold text-neutral-700 leading-relaxed">
@@ -132,6 +132,7 @@ export default function ParentVoiceRoute() {
                 )}
               </View>
             ) : (
+
               <View className="items-center py-4 space-y-2">
                 <Text className="text-base font-bold text-neutral-800 text-center leading-relaxed">
                   How can I help you today, Dad?

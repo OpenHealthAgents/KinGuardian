@@ -45,7 +45,7 @@ export const SimulatorControls: React.FC<SimulatorControlsProps> = ({
     },
     {
       label: '3. AI Diagnostic',
-      desc: 'KinGuard AI detects Chennai temperature correlation & step drop.'
+      desc: 'KinGuardian AI detects Chennai temperature correlation & step drop.'
     },
     {
       label: '4. Proxy Insight',
@@ -123,7 +123,7 @@ export const SimulatorControls: React.FC<SimulatorControlsProps> = ({
             <View className="flex-row items-center justify-between bg-slate-950 p-3 rounded-xl border border-slate-800/80">
               <View className="flex-1 pr-2">
                 <Text className="text-xs font-black text-slate-200">
-                  Demonstrate KinGuard's End-to-End Loop
+                  Demonstrate KinGuardian's End-to-End Loop
                 </Text>
                 <Text className="text-[9px] text-slate-400 font-medium">
                   Trace a Chennai vitals spike as it propagates and resolves.
@@ -136,6 +136,7 @@ export const SimulatorControls: React.FC<SimulatorControlsProps> = ({
                 <Text className="text-white text-xs font-black">Launch</Text>
               </TouchableOpacity>
             </View>
+
           ) : (
             <View className="space-y-3 bg-slate-950 p-3.5 rounded-xl border border-slate-800/80">
               <View className="flex-row justify-between items-center text-[10px] font-black text-[#f59e0b] uppercase tracking-wide">

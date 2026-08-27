@@ -186,7 +186,7 @@ export const WearablesManagementScreen: React.FC<WearablesManagementScreenProps>
   const handleDisconnectDevice = (device: WearableDeviceItem) => {
     Alert.alert(
       `Disconnect ${device.name}?`,
-      `This will revoke the Open Wearables connection link. Historical health records in KinGuard will be preserved, but new telemetry will pause.`,
+      `This will revoke the Open Wearables connection link. Historical health records in KinGuardian will be preserved, but new telemetry will pause.`,
       [
         { text: 'Cancel', style: 'cancel' },
         {
@@ -277,10 +277,11 @@ export const WearablesManagementScreen: React.FC<WearablesManagementScreenProps>
               Continuous Telemetry Ingestion
             </Text>
             <Text className="text-white/80 text-[11px] font-medium leading-relaxed mt-0.5">
-              Biometrics flow from hardware into KinGuard Guardian AI to detect mobility and recovery trends.
+              Biometrics flow from hardware into KinGuardian Guardian AI to detect mobility and recovery trends.
             </Text>
           </View>
         </View>
+
 
         {/* ========================================================================= */}
         {/* SECTION 1: CONNECTED DEVICES                                              */}
@@ -490,7 +491,7 @@ export const WearablesManagementScreen: React.FC<WearablesManagementScreenProps>
             <View className="bg-indigo-50/70 border border-indigo-100 rounded-2xl p-3.5 flex-row items-start gap-2.5">
               <Info size={16} color="#2a14b4" className="mt-0.5" />
               <Text className="text-xs text-slate-600 font-medium leading-relaxed flex-1">
-                KinGuard only requests read-only telemetry. Zero account credentials or passwords are ever received or stored on your device.
+                KinGuardian only requests read-only telemetry. Zero account credentials or passwords are ever received or stored on your device.
               </Text>
             </View>
 
@@ -641,14 +642,14 @@ export const WearablesManagementScreen: React.FC<WearablesManagementScreenProps>
                 Wearable Health Data Consent
               </Text>
               <Text className="text-xs text-slate-500 text-center font-medium px-4 leading-relaxed">
-                Wearable data is protected health information. Please confirm the data scopes to share with KinGuard.
+                Wearable data is protected health information. Please confirm the data scopes to share with KinGuardian.
               </Text>
             </View>
 
             {/* MANDATORY PRE-CONNECTION DISCLOSURES */}
             <View className="bg-indigo-50/60 rounded-2xl p-4 border border-indigo-100 space-y-2.5">
               <Text className="text-xs font-black text-[#2a14b4] uppercase tracking-wider">
-                What KinGuard can receive
+                What KinGuardian can receive
               </Text>
               <View className="space-y-1.5 pl-1">
                 <View className="flex-row items-center gap-2">
@@ -680,9 +681,10 @@ export const WearablesManagementScreen: React.FC<WearablesManagementScreenProps>
                 </Text>
               </View>
               <Text className="text-[10px] text-slate-500 font-medium leading-relaxed">
-                KinGuard never receives or stores your device passwords or vendor login credentials.
+                KinGuardian never receives or stores your device passwords or vendor login credentials.
               </Text>
             </View>
+
 
 
             <TouchableOpacity

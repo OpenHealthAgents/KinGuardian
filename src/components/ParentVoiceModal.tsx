@@ -68,8 +68,9 @@ export const ParentVoiceModal: React.FC<ParentVoiceModalProps> = ({
           {/* Close button */}
           <View className="flex-row justify-between items-center w-full">
             <Text className="text-base font-black text-slate-300 uppercase tracking-wide">
-              KinGuard Voice Co-Pilot
+              KinGuardian Voice Co-Pilot
             </Text>
+
             <TouchableOpacity
               onPress={() => {
                 setStage('idle');

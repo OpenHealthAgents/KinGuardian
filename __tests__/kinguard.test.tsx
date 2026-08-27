@@ -21,7 +21,8 @@ jest.mock('@react-native-async-storage/async-storage', () => ({
   removeItem: jest.fn().mockResolvedValue(undefined)
 }));
 
-describe('KinGuard Domain Services & Sync Logic', () => {
+describe('KinGuardian Domain Services & Sync Logic', () => {
+
   let medService: MockMedicationService;
   let familyService: MockFamilyService;
   let docService: MockDocumentService;

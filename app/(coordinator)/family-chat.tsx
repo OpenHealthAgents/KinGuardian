@@ -27,7 +27,7 @@ export default function FamilyCommunicationRoute() {
       time: '10:18 AM'
     },
     {
-      sender: 'KinGuard',
+      sender: 'KinGuardian',
       role: 'System Copilot',
       avatarColor: '#af52de',
       message: "Dad's latest medication and BP summary is ready.",
@@ -88,9 +88,10 @@ export default function FamilyCommunicationRoute() {
                     <View className="flex-row items-center gap-2">
                       <Sparkles size={14} color="#af52de" fill="#af52de" />
                       <Text className="text-[10px] font-bold text-[#af52de] uppercase tracking-wider">
-                        KinGuard Copilot
+                        KinGuardian Copilot
                       </Text>
                     </View>
+
                     <Text className="text-xs font-semibold text-neutral-700 leading-relaxed">
                       {msg.message}
                     </Text>

@@ -34,9 +34,10 @@ export const TransparencyInsightScreen: React.FC<TransparencyInsightScreenProps>
           <View className="flex-row items-center gap-1.5">
             <Sparkles size={14} color="#2a14b4" fill="#2a14b4" />
             <Text className="text-[10px] font-black uppercase tracking-wider text-[#2a14b4]">
-              KinGuard Clinical Intelligence
+              KinGuardian Clinical Intelligence
             </Text>
           </View>
+
           <Text className="text-lg font-black text-slate-900 leading-snug">
             {isDad ? "Dad's Health Review" : "Mom's Health Review"}
           </Text>

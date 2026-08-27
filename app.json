@@ -1,11 +1,12 @@
 {
   "expo": {
-    "name": "KinGuard Prototype",
-    "slug": "kinguard-prototype",
+    "name": "KinGuardian",
+    "slug": "kinguardian-prototype",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "scheme": "kinguard",
+    "scheme": "kinguardian",
+
     "ios": {
       "supportsTablet": true
     },

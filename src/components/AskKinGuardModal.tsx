@@ -37,8 +37,8 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
     {
       id: 'welcome-1',
       sender: 'ai',
-      senderName: 'KinGuard AI',
-      text: "Hello Anjali! I'm KinGuard, your family's concierge medical AI. I continuously monitor Mom and Dad's vitals, activity data, and care team instructions. What would you like to review today?",
+      senderName: 'KinGuardian AI',
+      text: "Hello Anjali! I'm KinGuardian, your family's concierge medical AI. I continuously monitor Mom and Dad's vitals, activity data, and care team instructions. What would you like to review today?",
       timestamp: 'Just now',
       citations: ['Connected Devices: Omron BP, Apple Health, Dexcom G7'],
       suggestedFollowUps: [
@@ -99,7 +99,8 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
           qLower.includes('blood pressure') ||
           qLower.includes('activity')
         ) {
-          aiReplyText = `**KinGuard Clinical Reasoning Insight:**\n\nI noticed Dad's evening systolic readings increased by **12%** (averaging 138/88 mmHg) alongside a **35% drop in step activity** over the last 5 days. The data shows this is different from Dad's usual pattern.\n\n**Possible Contributing Factors:**\n1. Severe Chennai heat wave (39°C) limiting veranda afternoon walks.\n2. Overnight sleep quality variations.\n\n**Recommendations**: Check in with Priya/Suresh to verify hydration levels. You may want to discuss this with his doctor.`;
+          aiReplyText = `**KinGuardian Clinical Reasoning Insight:**\n\nI noticed Dad's evening systolic readings increased by **12%** (averaging 138/88 mmHg) alongside a **35% drop in step activity** over the last 5 days. The data shows this is different from Dad's usual pattern.\n\n**Possible Contributing Factors:**\n1. Severe Chennai heat wave (39°C) limiting veranda afternoon walks.\n2. Overnight sleep quality variations.\n\n**Recommendations**: Check in with Priya/Suresh to verify hydration levels. You may want to discuss this with his doctor.`;
+
         } else if (
           qLower.includes('appointment') ||
           qLower.includes('doctor') ||
@@ -113,7 +114,7 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
         const aiMsg: ChatMessage = {
           id: `ai-${Date.now()}`,
           sender: 'ai',
-          senderName: 'KinGuard AI',
+          senderName: 'KinGuardian AI',
           text: aiReplyText,
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           citations: [
@@ -146,7 +147,7 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
             <View className="flex-row items-center gap-2">
               <Sparkles size={18} color="#af52de" fill="#af52de" />
               <Text className="text-lg font-bold text-neutral-900 tracking-tight">
-                Ask KinGuard AI
+                Ask KinGuardian AI
               </Text>
             </View>
             <TouchableOpacity
@@ -211,7 +212,7 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
               <View className="self-start bg-neutral-100 border border-neutral-200/50 p-4 rounded-2xl flex-row items-center gap-2">
                 <ActivityIndicator size="small" color="#af52de" />
                 <Text className="text-xs font-semibold text-neutral-500">
-                  KinGuard is analyzing clinical logs...
+                  KinGuardian is analyzing clinical logs...
                 </Text>
               </View>
             )}
@@ -239,7 +240,7 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
             <TextInput
               value={inputQuery}
               onChangeText={setInputQuery}
-              placeholder="Ask KinGuard medical questions..."
+              placeholder="Ask KinGuardian medical questions..."
               placeholderTextColor="#8e8e93"
               className="flex-1 px-4 py-2.5 text-xs text-neutral-800 outline-none"
             />
@@ -255,3 +256,7 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
     </Modal>
   );
 };
+
+export const AskKinGuardianModal = AskKinGuardModal;
+
+
