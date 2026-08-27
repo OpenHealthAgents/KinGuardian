@@ -5,3 +5,5 @@ export * from './WearableProviderPicker';
 export * from './WearableConnectionCard';
 export * from './ConnectWearableSheet';
 export * from './ReconnectWearableSheet';
+export * from './CoordinatorHealthSourcesView';
+
