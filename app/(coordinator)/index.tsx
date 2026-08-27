@@ -4,8 +4,9 @@ import { AppContext } from '../../src/store/AppContext';
 import { HealthDashboard } from '../../src/components/HealthDashboard';
 import { BottomNavBar } from '../../src/components/Navigation';
 import { QuickActionsModal } from '../../src/components/QuickActionsModal';
-import { AskKinGuardModal } from '../../src/components/AskKinGuardModal';
+import { AskKinGuardianModal } from '../../src/components/AskKinGuardianModal';
 import { CheckInModal } from '../../src/components/CheckInModal';
+
 import { NotificationCenter } from '../../src/components/NotificationCenter';
 import { DeviceFrame } from '../../src/components/DeviceFrame';
 import { SimulatorControls } from '../../src/components/SimulatorControls';
@@ -103,12 +104,13 @@ export default function CoordinatorDashboardRoute() {
           onAddContextSuccess={context.handleAddContextNote}
         />
 
-        <AskKinGuardModal
+        <AskKinGuardianModal
           isOpen={context.askAIOpen}
           onClose={() => context.setAskAIOpen(false)}
           initialQuery={context.askAIQuery}
           currentSubject={context.currentPersonId}
         />
+
 
         <CheckInModal
           isOpen={context.checkInOpen}

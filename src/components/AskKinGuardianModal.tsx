@@ -20,19 +20,20 @@ interface ChatMessage {
   suggestedFollowUps?: string[];
 }
 
-interface AskKinGuardModalProps {
+interface AskKinGuardianModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialQuery?: string;
   currentSubject: string;
 }
 
-export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
+export const AskKinGuardianModal: React.FC<AskKinGuardianModalProps> = ({
   isOpen,
   onClose,
   initialQuery,
   currentSubject
 }) => {
+
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'welcome-1',
@@ -257,6 +258,5 @@ export const AskKinGuardModal: React.FC<AskKinGuardModalProps> = ({
   );
 };
 
-export const AskKinGuardianModal = AskKinGuardModal;
-
+export const AskKinGuardModal = AskKinGuardianModal;
 
