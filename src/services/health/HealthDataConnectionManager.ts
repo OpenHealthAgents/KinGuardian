@@ -1,5 +1,5 @@
 /**
- * KinGuard Health Data Connection Manager.
+ * KinGuardian Health Data Connection Manager.
  *
  * Provides decoupled access to HealthDataConnection instances across screens,
  * preventing any React Native UI component from directly referencing vendor SDKs.

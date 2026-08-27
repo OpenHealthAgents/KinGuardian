@@ -29,7 +29,7 @@ export interface AppNotification {
     | 'medication_reminder'
     | 'appointment_reminder'
     | 'message_from_family'
-    | 'kinguard_request';
+    | 'kinguardian_request';
   recipient?: 'coordinator' | 'parent';
   time: string;
   read: boolean;

@@ -1,11 +1,11 @@
 /**
- * KinGuard Mobile Health Data Abstraction.
+ * KinGuardian Mobile Health Data Abstraction.
  *
  * Provides a decoupled interface for connecting device-local health stores
  * (Apple HealthKit on iOS, Google Health Connect on Android) and cloud wearable providers.
  *
  * Architecture:
- * React Native Screens -> KinGuard HealthDataConnection Abstraction -> Open Wearables RN SDK -> HealthKit / Health Connect
+ * React Native Screens -> KinGuardian HealthDataConnection Abstraction -> Open Wearables RN SDK -> HealthKit / Health Connect
  */
 
 export type ConnectionStatus =
@@ -48,7 +48,7 @@ export interface SyncTelemetryResult {
 }
 
 /**
- * Core KinGuard Health Data Connection Abstraction.
+ * Core KinGuardian Health Data Connection Abstraction.
  * React Native screens MUST code against this interface rather than
  * coupling directly to vendor or Open Wearables SDK APIs.
  */

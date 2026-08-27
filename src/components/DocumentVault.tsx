@@ -339,7 +339,7 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
                   {docName.includes('Apollo') ? 'I found 6 lab results.' : 'Extracted information'}
                 </Text>
                 <Text className="text-[9px] font-bold text-[#34c759] uppercase tracking-wider mt-0.5">
-                  KinGuard AI Parser Ingested
+                  KinGuardian AI Parser Ingested
                 </Text>
               </View>
               <TouchableOpacity

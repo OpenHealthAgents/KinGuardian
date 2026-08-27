@@ -24,7 +24,7 @@ interface ChatSource {
 
 interface ChatMessageItem {
   id: string;
-  sender: 'user' | 'kinguard';
+  sender: 'user' | 'kinguardian';
   text: string;
   sources?: ChatSource[];
   suggestedActions?: string[];
@@ -39,7 +39,7 @@ export default function CoordinatorAskRoute() {
   const [messages, setMessages] = useState<ChatMessageItem[]>([
     {
       id: 'msg-welcome',
-      sender: 'kinguard',
+      sender: 'kinguardian',
       text: "Ask anything about Mom & Dad's health status, wearable sensors, daily checklists, or clinic reports."
     }
   ]);
@@ -137,7 +137,7 @@ export default function CoordinatorAskRoute() {
 
       const aiMsg: ChatMessageItem = {
         id: `msg-${Date.now()}-ai`,
-        sender: 'kinguard',
+        sender: 'kinguardian',
         text: aiText,
         sources: aiSources,
         suggestedActions: aiActions

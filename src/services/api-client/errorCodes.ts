@@ -1,5 +1,5 @@
 /**
- * KinGuard Platform Domain Error Codes Taxonomy.
+ * KinGuardian Platform Domain Error Codes Taxonomy.
  * Consumed by the React Native client for UI error handling, toast alerts, and automatic recovery flows.
  */
 

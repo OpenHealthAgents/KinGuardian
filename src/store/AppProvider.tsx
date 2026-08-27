@@ -227,7 +227,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       senderName: 'Anjali (You)',
       senderAvatar:
         'https://lh3.googleusercontent.com/aida-public/AB6AXuBjb58pDYmLPOvRb2C93qIwVmN3Z3qZ__ljM1T9ZSdVoVI9ovH8x3UkvVX2km1jcc-lJDB8XKVXGhKX0bZL8qDi2s9jgC8eOKs1TubpaykQObp6xTg11e7t9fDFBiO9G_knt_Iu91RQ6oYuQGrd_EwUBKvQprl0XXO1mrgZ2LripRVXQ9ztlZOQr21ScUbgnP5iva9lVWOYFTQ4E6180FpDmnFn1lhIDcG8awhKsT88RjoTEgkPxtmV',
-      text: "Hey everyone, KinGuard noticed Dad's steps are down 35% over the past 5 days in Chennai and evening BP spiked to 138/88 mmHg. Suresh, has Dad been taking his afternoon walks on the veranda?",
+      text: "Hey everyone, KinGuardian noticed Dad's steps are down 35% over the past 5 days in Chennai and evening BP spiked to 138/88 mmHg. Suresh, has Dad been taking his afternoon walks on the veranda?",
       timestamp: '3:15 PM IST (9:45 AM BST)'
     },
     {
@@ -283,25 +283,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   useEffect(() => {
     const loadState = async () => {
       try {
-        const storedScenario = await AsyncStorage.getItem('kinguard_scenario');
+        const storedScenario = await AsyncStorage.getItem('kinguardian_scenario');
         if (storedScenario) setCurrentScenario(storedScenario as any);
 
-        const storedBP = await AsyncStorage.getItem('kinguard_bp');
+        const storedBP = await AsyncStorage.getItem('kinguardian_bp');
         if (storedBP) setCurrentBP(storedBP);
 
-        const storedPeople = await AsyncStorage.getItem('kinguard_people');
+        const storedPeople = await AsyncStorage.getItem('kinguardian_people');
         if (storedPeople) setPeople(JSON.parse(storedPeople));
 
-        const storedMeds = await AsyncStorage.getItem('kinguard_medications');
+        const storedMeds = await AsyncStorage.getItem('kinguardian_medications');
         if (storedMeds) setMedications(JSON.parse(storedMeds));
 
-        const storedNotifs = await AsyncStorage.getItem('kinguard_notifications');
+        const storedNotifs = await AsyncStorage.getItem('kinguardian_notifications');
         if (storedNotifs) setNotifications(JSON.parse(storedNotifs));
 
-        const storedTasks = await AsyncStorage.getItem('kinguard_tasks');
+        const storedTasks = await AsyncStorage.getItem('kinguardian_tasks');
         if (storedTasks) setCareTasks(JSON.parse(storedTasks));
 
-        const storedRecords = await AsyncStorage.getItem('kinguard_records');
+        const storedRecords = await AsyncStorage.getItem('kinguardian_records');
         if (storedRecords) setRecords(JSON.parse(storedRecords));
       } catch (err) {
         console.warn('Failed to load persisted offline state:', err);
@@ -314,13 +314,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   useEffect(() => {
     const saveState = async () => {
       try {
-        await AsyncStorage.setItem('kinguard_scenario', currentScenario);
-        await AsyncStorage.setItem('kinguard_bp', currentBP);
-        await AsyncStorage.setItem('kinguard_people', JSON.stringify(people));
-        await AsyncStorage.setItem('kinguard_medications', JSON.stringify(medications));
-        await AsyncStorage.setItem('kinguard_notifications', JSON.stringify(notifications));
-        await AsyncStorage.setItem('kinguard_tasks', JSON.stringify(careTasks));
-        await AsyncStorage.setItem('kinguard_records', JSON.stringify(records));
+        await AsyncStorage.setItem('kinguardian_scenario', currentScenario);
+        await AsyncStorage.setItem('kinguardian_bp', currentBP);
+        await AsyncStorage.setItem('kinguardian_people', JSON.stringify(people));
+        await AsyncStorage.setItem('kinguardian_medications', JSON.stringify(medications));
+        await AsyncStorage.setItem('kinguardian_notifications', JSON.stringify(notifications));
+        await AsyncStorage.setItem('kinguardian_tasks', JSON.stringify(careTasks));
+        await AsyncStorage.setItem('kinguardian_records', JSON.stringify(records));
       } catch (err) {
         console.warn('Failed to save offline state:', err);
       }
@@ -437,7 +437,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       // Clear active check-in request notification
       setNotifications((prev) =>
         prev.map((n) =>
-          n.recipient === 'parent' && n.category === 'kinguard_request' ? { ...n, read: true } : n
+          n.recipient === 'parent' && n.category === 'kinguardian_request' ? { ...n, read: true } : n
         )
       );
 
@@ -775,7 +775,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         id: `sim-notif-${Date.now()}`,
         title: 'BP Spiking Alert (Dad)',
         message:
-          'Ramesh’s evening blood pressure increased to 142/90 mmHg. KinGuard suggests checking room temperature.',
+          'Ramesh’s evening blood pressure increased to 142/90 mmHg. KinGuardian suggests checking room temperature.',
         type: 'alert',
         time: 'Just now',
         read: false,
@@ -924,7 +924,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             'Systolic readings rose by 12% alongside a 35% decrease in outdoor step recovery.'
         }
       }));
-      showToast('Step 3: KinGuard AI clinical reasoning computed.');
+      showToast('Step 3: KinGuardian AI clinical reasoning computed.');
     } else if (nextStep === 4) {
       const loopNotif: AppNotification = {
         id: `loop-notif-${Date.now()}`,
@@ -947,7 +947,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         senderName: 'Anjali (You)',
         senderAvatar:
           'https://lh3.googleusercontent.com/aida-public/AB6AXuBjb58pDYmLPOvRb2C93qIwVmN3Z3qZ__ljM1T9ZSdVoVI9ovH8x3UkvVX2km1jcc-lJDB8XKVXGhKX0bZL8qDi2s9jgC8eOKs1TubpaykQObp6xTg11e7t9fDFBiO9G_knt_Iu91RQ6oYuQGrd_EwUBKvQprl0XXO1mrgZ2LripRVXQ9ztlZOQr21ScUbgnP5iva9lVWOYFTQ4E6180FpDmnFn1lhIDcG8awhKsT88RjoTEgkPxtmV',
-        text: "Suresh, KinGuard just flagged Dad's BP is 142/90! Please check if he is drinking water and keeping cool in Chennai.",
+        text: "Suresh, KinGuardian just flagged Dad's BP is 142/90! Please check if he is drinking water and keeping cool in Chennai.",
         timestamp: 'Just now'
       };
       setChatMessages((prev) => [...prev, msgAnjali]);
@@ -1226,7 +1226,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       time: 'Just now',
       read: false,
       recipient: 'parent',
-      category: 'kinguard_request'
+      category: 'kinguardian_request'
     };
     setNotifications((prev) => [checkinNotif, ...prev]);
     showToast('Check-in request sent to Dad.');

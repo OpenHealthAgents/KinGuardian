@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "KinGuard Mobile Client Request & Response Examples",
+  "title": "KinGuardian Mobile Client Request & Response Examples",
   "examples": {
     "coordinator_home": {
       "endpoint": "GET /families/{family_id}/home",

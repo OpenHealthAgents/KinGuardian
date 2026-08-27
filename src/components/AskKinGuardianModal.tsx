@@ -258,5 +258,4 @@ export const AskKinGuardianModal: React.FC<AskKinGuardianModalProps> = ({
   );
 };
 
-export const AskKinGuardModal = AskKinGuardianModal;
 

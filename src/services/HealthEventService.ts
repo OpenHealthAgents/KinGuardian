@@ -44,7 +44,7 @@ export class MockHealthEventService implements HealthEventService {
       source: 'coordinator',
       severity: 'normal',
       category: 'vitals',
-      details: vital.note || 'Logged via KinGuard companion portal.'
+      details: vital.note || 'Logged via KinGuardian companion portal.'
     };
 
     this.events.unshift(newEvent);

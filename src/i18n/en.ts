@@ -8,7 +8,7 @@ export const en = {
     feelingNotWell: 'Not well',
     medicinesLabel: "Today's medicines",
     appointmentLabel: 'Next appointment',
-    talkToKinGuard: 'Talk to KinGuard',
+    talkToKinGuardian: 'Talk to KinGuardian',
     sendUpdate: 'Send update',
     checkInAgain: 'Check-in again',
     thanksDad: '“Thanks, Dad. Anjali has been updated.”'

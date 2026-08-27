@@ -62,7 +62,7 @@ export const ParentModeDashboard: React.FC<ParentModeDashboardProps> = ({
   };
 
   const hasCheckInRequest = context?.notifications.some(
-    (n) => n.recipient === 'parent' && n.category === 'kinguard_request' && !n.read
+    (n) => n.recipient === 'parent' && n.category === 'kinguardian_request' && !n.read
   );
 
   return (

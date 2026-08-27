@@ -3,7 +3,7 @@
  *
  * Verifies:
  * 1. React Native application contains ZERO Open Wearables admin keys, API keys, or master secrets.
- * 2. Mobile clients communicate exclusively with the authenticated KinGuard backend API.
+ * 2. Mobile clients communicate exclusively with the authenticated KinGuardian backend API.
  */
 
 import * as fs from 'fs';

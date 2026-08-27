@@ -1,5 +1,5 @@
 /**
- * KinGuard Mobile Health Data Connection & Native Adapter Test Suite.
+ * KinGuardian Mobile Health Data Connection & Native Adapter Test Suite.
  *
  * Verifies:
  * 1. HealthDataConnection interface abstraction:

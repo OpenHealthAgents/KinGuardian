@@ -157,7 +157,7 @@ export const INITIAL_OBSERVATIONS: Record<string, HealthObservation> = {
       title: 'Why am I seeing this insight?',
       subtitle: 'Understanding the rationale behind your recent elevated blood pressure alert.',
       clinicalReasoning:
-        "KinGuard AI detected a consistent 12% increase in evening systolic readings over the last 10 days, compared to Ramesh's baseline. This pattern often correlates with evening stress levels or heat exhaustion in Chennai, prompting a proactive review.",
+        "KinGuardian AI detected a consistent 12% increase in evening systolic readings over the last 10 days, compared to Ramesh's baseline. This pattern often correlates with evening stress levels or heat exhaustion in Chennai, prompting a proactive review.",
       highlightMetric: '12% increase',
       confidenceText: 'HIGH CONFIDENCE • DIRECT WEARABLE INGESTION',
       confidenceLevel: 'high',
@@ -266,7 +266,7 @@ export const INITIAL_OBSERVATIONS: Record<string, HealthObservation> = {
       title: 'Why am I seeing this insight?',
       subtitle: 'Understanding the rationale behind Mom’s stable metabolic milestone.',
       clinicalReasoning:
-        'KinGuard observed an 85% time-in-range (70–140 mg/dL) consistently throughout the week, representing a notable improvement from the prior 68% baseline.',
+        'KinGuardian observed an 85% time-in-range (70–140 mg/dL) consistently throughout the week, representing a notable improvement from the prior 68% baseline.',
       highlightMetric: '85% in target range',
       confidenceText: 'HIGH CONFIDENCE • DIRECT CGM STREAM',
       confidenceLevel: 'high',
@@ -646,7 +646,7 @@ export const INITIAL_NOTIFICATIONS = [
     title: 'Daily Check-in Request 🛡️',
     message: 'Let Anjali know how you are feeling today. Tap to check-in.',
     type: 'reminder' as const,
-    category: 'kinguard_request' as const,
+    category: 'kinguardian_request' as const,
     recipient: 'parent' as const,
     time: 'Today 9:00 AM',
     read: false
