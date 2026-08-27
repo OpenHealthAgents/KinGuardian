@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 import { useRouter } from 'expo-router';
-import { MessageSquare, Volume2, Bell } from 'lucide-react-native';
+import { MessageSquare, Volume2, Bell, Watch, ChevronRight } from 'lucide-react-native';
+
 import { HealthRecordItem } from '../types';
 import { t } from '../i18n';
 import { AppContext } from '../store/AppContext';
@@ -358,8 +359,41 @@ export const ParentModeDashboard: React.FC<ParentModeDashboardProps> = ({
             })}
           </View>
         </View>
+
+        {/* Section: My health devices */}
+        <View className="space-y-2">
+          <Text className="text-xs font-bold text-neutral-400 uppercase tracking-wider px-1">
+            My health devices
+          </Text>
+          <TouchableOpacity
+            onPress={() => router.push('/(parent)/devices')}
+            className="bg-white rounded-2xl p-4.5 shadow-sm shadow-neutral-100 flex-row items-center justify-between active:scale-98 border border-neutral-100"
+          >
+            <View className="flex-row items-center gap-3.5">
+              <View className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 items-center justify-center">
+                <Watch size={24} color="#2a14b4" />
+              </View>
+              <View>
+                <View className="flex-row items-center gap-2">
+                  <Text className="text-base font-bold text-neutral-900">Apple Watch</Text>
+                  <View className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <Text className="text-xs font-bold text-emerald-700">Connected</Text>
+                </View>
+                <Text className="text-xs text-neutral-400 font-medium mt-0.5">
+                  Last updated 8 minutes ago
+                </Text>
+              </View>
+            </View>
+            <View className="flex-row items-center gap-1">
+              <Text className="text-xs font-bold text-[#007aff]">View</Text>
+              <ChevronRight size={14} color="#007aff" />
+            </View>
+          </TouchableOpacity>
+        </View>
+
         <View className="h-28" />
       </View>
     </ScrollView>
+
   );
 };
