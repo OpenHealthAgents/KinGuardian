@@ -6,4 +6,6 @@ export * from './WearableConnectionCard';
 export * from './ConnectWearableSheet';
 export * from './ReconnectWearableSheet';
 export * from './CoordinatorHealthSourcesView';
+export * from './ParentDevicesView';
+
 
