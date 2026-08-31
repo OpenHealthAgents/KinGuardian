@@ -152,6 +152,8 @@ export class DrGodlyApiClient {
   public readonly families = {
     getDashboard: (familyId: UUID) =>
       this.request<any>('GET', `/api/v1/families/${familyId}/dashboard`),
+    getHome: (familyId: UUID) =>
+      this.request<any>('GET', `/api/v1/families/${familyId}/home`),
     listMembers: (familyId: UUID) =>
       this.request<FamilyMembership[]>('GET', `/api/v1/families/${familyId}/members`)
   };
@@ -160,7 +162,12 @@ export class DrGodlyApiClient {
     getSummary: (familyId: UUID, subjectId: UUID) =>
       this.request<any>('GET', `/api/v1/families/${familyId}/subjects/${subjectId}/summary`),
     list: (familyId: UUID) =>
-      this.request<CareSubjectResponse[]>('GET', `/api/v1/families/${familyId}/subjects`)
+      this.request<CareSubjectResponse[]>('GET', `/api/v1/families/${familyId}/subjects`),
+    create: (familyId: UUID, data: any, idempotencyKey?: string) =>
+      this.request<CareSubjectResponse>('POST', `/api/v1/circles/${familyId}/subjects`, {
+        body: data,
+        idempotencyKey
+      })
   };
 
   public readonly medications = {
@@ -173,8 +180,11 @@ export class DrGodlyApiClient {
 
   public readonly checkins = {
     submit: (req: WellbeingCheckinCreate, idempotencyKey?: string) =>
-      this.request<WellbeingCheckinResponse>('POST', '/api/v1/parent/checkin', {
-        body: req,
+      this.request<WellbeingCheckinResponse>('POST', `/api/v1/subjects/${req.subject_id}/check-ins`, {
+        body: {
+          feeling: req.feeling,
+          notes: req.notes
+        },
         idempotencyKey
       })
   };

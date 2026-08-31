@@ -66,6 +66,15 @@ export interface CareSubjectResponse {
   created_at: ISODateTime;
 }
 
+export interface CareSubjectCreate {
+  fhir_patient_id: string;
+  profile_id?: UUID | null;
+  relationship_to_coordinator?: string | null;
+  city?: string | null;
+  country_code?: string | null;
+  timezone?: string | null;
+}
+
 export interface MedicationConfirmRequest {
   adherence_id: UUID;
   subject_id: UUID;

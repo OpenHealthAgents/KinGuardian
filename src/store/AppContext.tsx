@@ -45,6 +45,7 @@ export interface AppContextType {
   assignCareTask(task: CareTask): void;
   sendFamilyMessage(text: string): void;
   addHealthEvent(event: HealthEvent): void;
+  addParent(payload: { name: string; relationship?: string; city?: string; countryCode?: string; timezone?: string; age?: number; phone?: string; }): Promise<void>;
 
   // --- PROTOTYPE NAVIGATION AND UI HELPERS (For compatibility) ---
   appMode: 'coordinator' | 'parent';

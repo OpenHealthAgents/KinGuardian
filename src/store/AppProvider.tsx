@@ -30,13 +30,13 @@ import {
   INITIAL_SYNC_LOGS
 } from '../data/mockData';
 import {
-  MockFamilyService,
+  ApiFamilyService,
   MockMedicationService,
   MockHealthEventService,
   MockDocumentService
 } from '../services';
 
-const familyService = new MockFamilyService();
+const familyService = new ApiFamilyService();
 const medicationService = new MockMedicationService();
 const healthEventService = new MockHealthEventService();
 const documentService = new MockDocumentService();
@@ -303,6 +303,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
         const storedRecords = await AsyncStorage.getItem('kinguardian_records');
         if (storedRecords) setRecords(JSON.parse(storedRecords));
+
+        // Sync live subjects from database if available
+        try {
+          const liveMembers = await familyService.getFamilyMembers();
+          if (liveMembers && liveMembers.length > 0) {
+            setPeople(liveMembers);
+          }
+        } catch (apiErr) {
+          console.warn('Could not sync live family members on mount:', apiErr);
+        }
       } catch (err) {
         console.warn('Failed to load persisted offline state:', err);
       }
@@ -506,6 +516,28 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
       setNotifications((prev) => [checkinNotif, ...prev]);
       showToast(`Logged status: Feeling ${status}`);
+    });
+  };
+
+  const addParent = async (payload: {
+    name: string;
+    relationship?: string;
+    city?: string;
+    countryCode?: string;
+    timezone?: string;
+    age?: number;
+    phone?: string;
+  }) => {
+    await runWithSyncLoader(async () => {
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
+      const newMember = await familyService.addParent(payload);
+      setPeople((prev) => {
+        const filtered = prev.filter(
+          (p) => p.id !== newMember.id && (!newMember.backendSubjectId || p.backendSubjectId !== newMember.backendSubjectId)
+        );
+        return [...filtered, newMember];
+      });
+      showToast(`Connected ${payload.name} (${payload.relationship || 'Parent'}) successfully.`);
     });
   };
 
@@ -1259,6 +1291,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         assignCareTask,
         sendFamilyMessage,
         addHealthEvent,
+        addParent,
 
         // --- PROTOTYPE NAVIGATION AND UI HELPERS (For compatibility) ---
         demoUsers: DEMO_USERS,

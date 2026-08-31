@@ -15,4 +15,6 @@ export interface FamilyMember {
   avatarUrl?: string;
   currentStatus?: string;
   conditions?: string[];
+  location?: string;
+  backendSubjectId?: string;
 }

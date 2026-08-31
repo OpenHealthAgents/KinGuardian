@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { AppContext } from '../store/AppContext';
 import {
   ShieldCheck,
   Heart,
@@ -16,6 +17,7 @@ interface OnboardingScreenProps {
 }
 
 export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
+  const context = useContext(AppContext);
   const [step, setStep] = useState(1);
   const [userLoc, setUserLoc] = useState('UK');
   const [parentLoc, setParentLoc] = useState('India');
@@ -31,6 +33,16 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
   const [inviteMethod, setInviteMethod] = useState<'WhatsApp' | 'SMS' | 'Email'>('WhatsApp');
 
   const handleNext = () => {
+    if (step === 5 && parentName.trim()) {
+      context?.addParent({
+        name: parentName.trim(),
+        relationship: careTarget === 'Mom' ? 'Mother' : careTarget === 'Dad' ? 'Father' : 'Parent',
+        city: parentCity.trim() || 'Chennai',
+        age: parseInt(parentAge, 10) || 65,
+        phone: parentPhone.trim()
+      });
+    }
+
     if (step < 7) {
       setStep(step + 1);
     } else {
